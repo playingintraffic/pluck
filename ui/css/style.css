@@ -1,0 +1,124 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+/* Main Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    //background-image: url("/ui/assets/bgtestgta.jpg");
+}
+
+/* Hidden Class */
+.hidden {
+    display: none !important;
+}
+
+/* Padding (slight for text / icons stops cutoffs with text shadow) */
+i, p { 
+    padding: 2px; 
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 0.2vh;
+    height: 0.2vh;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar_track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--scrollbar_track);
+}
+
+
+/* Focus */
+textarea:focus,
+input:focus,
+button:focus {
+    outline: none;
+}
+
+/* Inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Main UI */
+#ui_container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+}
+
+#ui_base,
+#ui_main,
+#ui_focus {
+    position: absolute;
+    inset: 0;
+}
+
+#ui_base {
+    z-index: 1;
+    pointer-events: none;
+}
+
+#ui_main {
+    z-index: 10;
+    pointer-events: auto;
+}
+
+#ui_focus {
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* Scroll Overrides */
+.scroll_y_none {
+    overflow-y: hidden !important;
+}
+.scroll_y_auto {
+    overflow-y: auto !important;
+}
+.scroll_y_on {
+    overflow-y: scroll !important;
+}
+.scroll_x_none {
+    overflow-x: hidden !important;
+}
+.scroll_x_auto {
+    overflow-x: auto !important;
+}
+.scroll_x_on {
+    overflow-x: scroll !important;
+}
+
+/* Vignette */
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: none;
+    z-index: -1;
+}
+

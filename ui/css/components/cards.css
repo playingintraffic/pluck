@@ -1,0 +1,158 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+/* Container */
+.cards_container {
+    margin-top: 1vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 2vh;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 1.5vh;
+    align-content: start;
+}
+.cards_container.row {
+    background: transparent;
+}
+.cards_container.column {
+    background: transparent;
+}
+
+/* Cards */
+.body_card {
+    display: flex;
+    background-color: var(--background_panel);
+    border-radius: var(--border_radius_outer);
+    border: var(--border_dark);
+    box-shadow: var(--shadow_soft);
+    box-sizing: border-box;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 11;
+    height: fit-content;
+    align-self: start;
+}
+
+/* Column Flex */
+.body_card.column {
+    flex-direction: column;
+    padding: 1vh;
+    gap: 1vh;
+}
+.body_card.column .body_card_image {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    padding: 0;
+}
+.body_card.column .body_card_info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.body_card.column .body_card_actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5vh 1vh;
+    gap: 1vh;
+}
+
+/* Row Flex */
+.body_card.row {
+    flex-direction: row;
+    padding: 1vh;
+    align-items: center;
+    height: fit-content;
+    min-height: 8vh;
+    gap: 1vh;
+}
+.body_card.row .body_card_image {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    padding: 0;
+}
+.body_card.row .body_card_info {
+    flex: 1;
+    padding: 0 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.body_card.row .body_card_actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5vh;
+    padding: 0;
+}
+
+/* Images */
+.body_card_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    
+}
+.body_card_image_wrapper {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5vh;
+}
+.body_card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text */
+.body_card_info h4 {
+    font-size: 1.2rem;
+    color: var(--text_colour);
+    font-family: var(--header_font_family);
+    margin-left: 0.2vh;
+}
+
+.body_card_info p {
+    font-size: 1rem;
+    color: var(--text_tertiary);
+    margin: 0;
+}
+
+/* Buttons */
+.button_group.cards {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.body_card_image.rarity_uncommon {
+    background: linear-gradient(to top, var(--rarity_uncommon) 0%, transparent 55%), var(--background_panel);
+}
+
+.body_card_image.rarity_rare {
+    background: linear-gradient(to top, var(--rarity_rare) 0%, transparent 55%), var(--background_panel);
+}
+
+.body_card_image.rarity_epic {
+    background: linear-gradient(to top, var(--rarity_epic) 0%, transparent 55%), var(--background_panel);
+}
+
+.body_card_image.rarity_legendary {
+    background: linear-gradient(to top, var(--rarity_legendary) 0%, transparent 55%), var(--background_panel);
+}

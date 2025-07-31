@@ -1,0 +1,217 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+/* Container */
+#modal_container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    z-index: 103;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background_overlay);
+}
+
+/* Modal */
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--background_main);
+    border: var(--border_dark);
+    border-radius: var(--border_radius_outer);
+    color: var(--text_primary);
+    font-family: var(--text_font);
+    opacity: 1;
+    width: fit-content;
+    pointer-events: auto;
+    box-shadow: var(--shadow_soft);
+}
+
+/* Title */
+.modal_title {
+    position: relative;
+    display: flex;
+    font-size: 2.4vh;
+    color: var(--text_primary);
+    margin: 2vh;
+    font-weight: bold;
+    font-family: var(--header_font);
+}
+.modal_title::after {
+    position: absolute;
+    bottom: 0.1vh;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 0.1vh;
+    background: var(--text_tertiary);
+}
+
+/* Fields */
+.modal_fields {
+    height: 80%;
+    width: 97%;
+    overflow-y: scroll;
+}
+.modal_field {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2vh 1.5vh 2vh;
+}
+
+/* Field Labels */
+.modal_field label {
+    position: relative;
+    display: flex;
+    font-size: 1rem;
+    color: var(--text_primary);
+    padding-left: 0.7vh;
+    margin-bottom: 1vh;
+    border-bottom: 0.1vh dashed var(--text_tertiary);
+}
+.modal_field label::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 0.3vh;
+    height: 100%;
+    background: var(--accent);
+}
+
+/* Inputs */
+.modal_field input {
+    font-size: 1.5vh;
+    background: var(--background_panel);
+    color: var(--text_primary);
+    border: 0.2vh solid transparent;
+    border-radius: var(--border_radius_outer);
+    height: 3.4vh;
+    padding: 0 1vh;
+}
+.modal_field input:hover {
+    border: var(--border_dark);
+}
+.modal_field input:focus {
+    border: var(--border_dark);
+}
+.modal_field input:focus {
+    border: var(--border_dark);
+}
+.modal_field input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 1.5vh;
+    background: var(--background_panel);
+    border-radius: var(--border_radius_outer);
+    cursor: pointer;
+}
+.modal_field input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 100%;
+    width: 0.5vh;
+    background: var(--accent);
+    transition: background 0.2s;
+}
+.modal_field input[type="range"]:hover::-webkit-slider-thumb {
+    background: var(--accent_hover, #00c3ff);
+}
+
+/* Text Areas */
+.modal_field textarea {
+    font-size: 1.5vh;
+    background: var(--background_panel);
+    color: var(--text_primary);
+    border: 0.2vh solid transparent;
+    border-radius: var(--border_radius_outer);
+    padding: 1vh;
+    min-height: 10vh;
+    resize: vertical;
+    width: 100%;
+    font-family: var(--text_font);
+    transition: border 0.2s ease;
+}
+.modal_field textarea:hover {
+    border: var(--border_dark);
+}
+.modal_field textarea:focus {
+    border: var(--border_dark);
+    outline: none;
+}
+.modal_field textarea::-webkit-scrollbar {
+    width: 0.6vh;
+}
+.modal_field textarea::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 0.3vh;
+}
+
+/* Select */
+.modal_select_wrapper {
+    position: relative;
+    width: 100%;
+    font-family: var(--text_font);
+    border-radius: var(--border_radius_outer);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+.modal_select {
+    padding: 0.6vh 1vh;
+    color: var(--text_primary);
+    font-size: 1.5vh;
+    background: var(--background_panel);
+    border-radius: var(--border_radius_outer);
+    border: 0.2vh solid transparent;
+    transition: border 0.2s;
+}
+.modal_select:hover {
+    border: var(--border_dark);
+}
+.modal_select_options {
+    width: 100%;
+    background: var(--background_panel);
+    border: var(--border_dark);
+    border-radius: var(--border_radius_outer);
+    max-height: 20vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: var(--shadow_soft);
+}
+.modal_select_options .custom_option {
+    padding: 1vh;
+    color: var(--text_primary);
+    font-size: 1.4vh;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.modal_select_options .custom_option:not(:last-child) {
+    border-bottom: var(--border_light);
+}
+.modal_select_options .custom_option:hover {
+    color: var(--accent);
+}
+
+/* Actions */
+.modal_actions {
+    display: flex;
+    margin: 0 2vh;
+    margin-bottom: 1vh;
+}
+
+/* Buttons */
+.modal_button_group {
+    width: 100%;
+}

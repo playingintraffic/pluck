@@ -1,0 +1,59 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+/* Group */
+.button_group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+}
+
+/* Button */
+.button_group .btn {
+    padding: var(--button_padding);
+    font-size: 1rem;
+    font-family: var(--header_font);
+    background: var(--background_main);
+    color: var(--text_primary);
+    border: none;
+    border-radius: var(--border_radius_outer);
+    box-shadow: var(--inset_shadow_large);
+    cursor: pointer;
+    transition: background opacity 0.2s ease, transform 0.1s ease;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vh;
+}
+
+/* Hover / Active */
+.button_group .btn:hover {
+    opacity: 1.0;
+    transform: scale(1.02);
+}
+
+.button_group .btn:active {
+    opacity: 1.0;
+    background: var(--accent_active);
+}
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Button Styles -- will add more later*/
+.btn.primary {
+    background: var(--accent2);
+    color: var(--text_primary);
+}
+.btn.secondary {
+    background: var(--accent3);
+    color: var(--text_primary);
+}

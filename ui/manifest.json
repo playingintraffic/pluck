@@ -1,0 +1,31 @@
+{
+    "default_theme": "default",
+    "themes": [ "default" ],
+    "css": [
+        "/ui/css/fonts.css",
+        "/ui/css/style.css",
+        "/ui/css/components/content.css",
+        "/ui/css/components/footer.css",
+        "/ui/css/components/header.css",
+        "/ui/css/components/modal.css",
+        "/ui/css/components/tooltip.css",
+        "/ui/css/components/sidebar.css",
+
+        "/ui/css/components/buttons.css",
+        "/ui/css/components/notify.css",
+        "/ui/css/components/cards.css",
+        "/ui/css/components/input_groups.css",
+        "/ui/css/components/namecard.css",
+        "/ui/css/components/dui_sprite.css",
+        "/ui/css/components/progress_circle.css",
+        "/ui/css/components/progress_bar.css",
+
+        "/ui/css/themes/default.css"
+    ],
+    "js": [
+        "/ui/js/components/notify.js",
+        "/ui/js/components/dui_sprite.js",
+        "/ui/js/app.js",
+        "/ui/js/test.js"
+    ]
+}

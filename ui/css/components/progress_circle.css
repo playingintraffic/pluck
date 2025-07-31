@@ -1,0 +1,46 @@
+.prog_timer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    opacity: 0.9;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress_circle {
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+
+#progress_canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+}
+
+.timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.25rem;
+    color: var(--text_primary);
+    font-family: var(--header_font);
+}
+
+.status_message {
+    margin-top: -2vh;
+    color: var(--text_primary);
+    font-family: var(--text_font);
+    text-shadow: var(--text_shadow_hard);
+    font-size: 1.5rem;
+}

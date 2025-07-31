@@ -1,0 +1,109 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+/* Container */
+.notify_container {
+    pointer-events: none;
+    padding: 2vh;
+    z-index: 1000;
+}
+
+/* Notification */
+.notify {
+    background: var(--background_main);
+    border-radius: var(--border_radius_outer);
+    color: var(--text_primary);
+    border: var(--border_dark);
+    box-shadow: var(--shadow_soft);
+    min-width: 12vw;
+    max-width: 26vw;
+    pointer-events: auto;
+    font-family: var(--text_font);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+    animation: fade_in 0.2s ease-out;
+    padding: 1vh;
+}
+
+/* Header */
+.notify_header {
+    font-family: var(--header_font);
+    font-size: 1.2rem;
+    color: var(--text_primary);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+}
+
+/* Body */
+.notify_body {
+    font-size: 1rem;
+    color: var(--text_primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+}
+
+/* Progressbar */
+.notify_bar {
+    height: 0.4vh;
+    background: var(--background_panel);
+    overflow: hidden;
+    box-shadow: var(--inset_shadow_large);
+    border-radius: var(--border_radius_inner);
+    margin-top: 0.5vh;
+}
+.notify_fill {
+    width: 100%;
+    height: 100%;
+    transition: width linear;
+    box-shadow: var(--inset_shadow_small);
+}
+
+/* Icons */
+.notify_icon {
+    font-size: 1rem;
+}
+
+/* Type Specific Styles */
+/* Icons */
+.notify_success .notify_icon { color: var(--notify_success); }
+.notify_error .notify_icon   { color: var(--notify_error); }
+.notify_info .notify_icon    { color: var(--notify_info); }
+.notify_warning .notify_icon { color: var(--notify_warning); }
+.notify_primary .notify_icon { color: var(--notify_primary); }
+
+/* Progress Bar */
+.notify_success .notify_fill { background: var(--notify_success); }
+.notify_error .notify_fill   { background: var(--notify_error); }
+.notify_info .notify_fill    { background: var(--notify_info); }
+.notify_warning .notify_fill { background: var(--notify_warning); }
+.notify_primary .notify_fill { background: var(--notify_primary); }
+
+/* Border Colour (if colour match border true) */
+.notify_border_success { border-color: var(--notify_success) !important; }
+.notify_border_error   { border-color: var(--notify_error) !important; }
+.notify_border_info    { border-color: var(--notify_info) !important; }
+.notify_border_warning { border-color: var(--notify_warning) !important; }
+.notify_border_primary { border-color: var(--notify_primary) !important; }
+
+/* Box Shadow (if colour match shadow true) */
+.notify_shadow_success { box-shadow: 0 2px 4px var(--notify_success) !important; }
+.notify_shadow_error   { box-shadow: 0 2px 4px var(--notify_error) !important; }
+.notify_shadow_info    { box-shadow: 0 2px 4px var(--notify_info) !important; }
+.notify_shadow_warning { box-shadow: 0 2px 4px var(--notify_warning) !important; }
+.notify_shadow_primary { box-shadow: 0 2px 4px var(--notify_primary) !important; }
+
+/* Animations */
+@keyframes fade_in {
+    from { opacity: 0; transform: translateY(-5%); }
+    to { opacity: 1; transform: translateY(0); }
+}

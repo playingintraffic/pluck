@@ -1,0 +1,164 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+/* Container */
+.input_groups_container {
+    margin-top: 1vh;
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 2vh;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-right: 1.5vh;
+    align-content: start;
+    pointer-events: auto;
+}
+.input_groups_container.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.input_groups_container.column {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    align-items: stretch;
+}
+
+/* Groups */
+.input_group {
+    display: flex;
+    flex-direction: column;
+    background: var(--background_main);
+    border-radius: var(--border_radius_outer);
+    border: var(--border_dark);
+    box-shadow: var(--shadow_soft);
+    box-sizing: border-box;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 11;
+    padding: 1vh;
+    height: fit-content;
+    align-self: start;
+}
+
+/* Title */
+.input_group h4 {
+    font-family: var(--header_font);
+    font-size: 1.2rem;
+    color: var(--text_primary);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Inputs */
+.group_inputs.hidden {
+    display: none;
+}
+.input_pair {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1vh;
+    margin: 1.5vh 0;
+    width: 100%;
+}
+.input_pair label {
+    flex: 1;
+    font-family: var(--text_font);
+    color: var(--text_secondary);
+    font-size: 0.8rem;
+    position: relative;
+    display: flex;
+    padding-left: 1vh;
+    border-bottom: var(--border_dashed);
+}
+.input_pair label::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 0.3vh;
+    height: 100%;
+    background: var(--accent);
+}
+.input_controls {
+    display: flex;
+    height: 2.5vh;
+    align-items: center;
+    gap: 1vh;
+    margin: 0.5vh 0;
+}
+.group_input {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2vh;
+    border: none;
+    border-radius: var(--border_radius_inner);
+    background: var(--background_overlay);
+    color: var(--text_colour);
+    box-shadow: var(--inset_shadow_large);
+    text-align: center;
+    padding: 0 0.5vh;
+    font-family: var(--text_font);
+}
+.group_input[type="text"] {
+    width: 100%;
+    height: 2.5vh;
+    text-align: left;
+}
+.input_group_inline .btn {
+    height: 2.5vh;
+    width: 3vw;
+    font-size: 1.2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: var(--text_colour);
+    border: none;
+    border-radius: var(--border_radius_inner);
+    box-shadow: var(--inset_shadow_large);
+}
+.input_group_inline .btn:hover {
+    opacity: 0.9;
+}
+
+/* Buttons */
+.expand_button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text_primary);
+    font-size: 1rem;
+    padding: 0.2vh;
+    transition: transform 0.2s ease;
+}
+.expand_button:hover {
+    transform: scale(1.1);
+}
+.button_group.input_groups {
+    justify-content: flex-end;
+}
+
+
+/* Scroll */
+.input_groups_container.scroll_y_none { overflow-y: hidden !important; }
+.input_groups_container.scroll_y_auto { overflow-y: auto !important; }
+.input_groups_container.scroll_y_on   { overflow-y: scroll !important; }
+.input_groups_container.scroll_x_none { overflow-x: hidden !important; }
+.input_groups_container.scroll_x_auto { overflow-x: auto !important; }
+.input_groups_container.scroll_x_on   { overflow-x: scroll !important; }
