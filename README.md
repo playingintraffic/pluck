@@ -2,6 +2,8 @@
 
 # PLUCK - Predefined LUA UI Component Kit
 
+Read the docs: **[Documentation](https://playingintraffic.site/docs/pluck)**
+
 ## What is PLUCK?
 
 **Formally?** Predefined LUA UI Component Kit
@@ -55,7 +57,7 @@ Less "learning React" - more "just show the damn button."
 
 ### Download
 
-- Grab the latest release from [Releases](https://github.com/boiidevelopment/pluck/releases/)
+- Grab the latest release from [Releases](https://github.com/playingintraffic/pluck/releases/)
 
 ### Add the Resource
 
