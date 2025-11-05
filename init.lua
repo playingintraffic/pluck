@@ -99,3 +99,23 @@ function pluck.log(level, message)
 
     print(("%s[%s] [BDUK] [%s]:^7 %s"):format(clr, time, level:upper(), message))
 end
+
+--- Creates a deep copy of a table, ensuring changes to the copy won't affect the original table.
+--- @param t table: The table to copy.
+--- @return table: A deep copy of the table.
+function pluck.deep_copy(t)
+    local orig_type = type(t)
+    local copy
+
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, t, nil do
+            copy[pluck.deep_copy(orig_key)] = pluck.deep_copy(orig_value)
+        end
+        setmetatable(copy, pluck.deep_copy(getmetatable(t)))
+    else
+        copy = t
+    end
+
+    return copy
+end

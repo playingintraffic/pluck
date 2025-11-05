@@ -19,12 +19,14 @@
         "/ui/css/components/dui_sprite.css",
         "/ui/css/components/progress_circle.css",
         "/ui/css/components/progress_bar.css",
+        "/ui/css/components/action_menu.css",
 
         "/ui/css/themes/default.css"
     ],
     "js": [
         "/ui/js/components/notify.js",
         "/ui/js/components/dui_sprite.js",
+        "/ui/js/components/action_menu.js",
         "/ui/js/app.js",
         "/ui/js/test.js"
     ]

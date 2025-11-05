@@ -1,0 +1,115 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
+    See the LICENSE file in the root directory for full terms.
+
+    © 2025 Case @ Playing In Traffic
+
+    Support honest development — retain this credit. Don’t be that guy...
+*/
+
+.action_menu_container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.actions.left, 
+.actions.right {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1vh;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.actions.left {
+    align-items: flex-end;
+}
+
+.actions.right {
+    align-items: flex-start; 
+}
+
+.action {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    margin-right: 1.5vh;
+    margin-left: 1.5vh;
+}
+
+.action .label_container {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    border-radius: var(--border_radius_outer);
+    justify-content: space-between;
+    gap: 1vh;
+    opacity: 0.9;
+    padding: 1vh;
+}
+
+.action .label_container:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.action .label {
+    padding: 5px 10px;
+    border-radius: var(--border_radius_outer);
+    border: none;
+    white-space: nowrap;
+    font-size: 1.2vh;
+    background-color: var(--background_main);
+    color: var(--text_primary);
+    font-family: var(--text_font_family);
+    box-shadow: var(--shadow_medium);
+}
+
+.action .icon {
+    background-color: var(--background_main);
+    border-radius: var(--border_radius_outer);
+    height: 3vh;
+    width: 3vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3vh;
+    box-shadow: var(--shadow_medium);
+    color: var(--accent);
+}
+
+.center_button {
+    background: var(--background_main);
+    border-radius: var(--border_radius_outer);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vh;
+    color: var(--text_primary);
+    opacity: 0.9;
+    user-select: none;
+    box-shadow: var(--shadow_medium);
+    color: var(--accent);
+    height: 2.5vh;
+    width: 2.5vh;
+}
+
+.center_button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.center_button i {
+    margin-left: 1px;
+    margin-top: 3px;
+    padding: 1px;
+}

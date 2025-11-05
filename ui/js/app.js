@@ -13,8 +13,10 @@ import { DUISprite } from "/ui/js/components/dui_sprite.js";
 import { ProgressCircle } from "/ui/js/components/progress_circle.js";
 import { ProgressBar } from "/ui/js/components/progress_bar.js";
 import { Modal } from "/ui/js/components/modal.js";
+import { ActionMenu } from "/ui/js/components/action_menu.js"
 
 let interact_dui = null;
+let action_menu = null;
 
 /**
  * Notification instance
@@ -145,6 +147,21 @@ handlers.show_modal = (data) => {
         buttons: data.payload.buttons || []
     });
 };
+
+/**
+ * Creates action menu
+ * 
+ */
+handlers.create_action_menu = (data) => {
+    action_menu = new ActionMenu();
+    action_menu.create_menu(data.payload);
+}
+
+handlers.close_action_menu = () => {
+    if (action_menu) {
+        action_menu.close();
+    }
+}
 
 /**
  * Global message listener for all NUI messages.

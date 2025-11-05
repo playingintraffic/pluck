@@ -26,7 +26,7 @@ fx_version "cerulean"
 games { "gta5", "rdr3" }
 
 name "pluck"
-version "1.0.0"
+version "1.1.0"
 description "PLUCK - Predefined Lua UI Component Kit"
 author "PlayingInTraffic"
 repository "https://github.com/playingintraffic/pluck"
