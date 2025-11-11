@@ -6,12 +6,12 @@ PLUCK provides both client-side exports and events for triggering UI layouts and
 
 ## Events
 
-### `bduk:notify`
+### `pluck:notify`
 
 Send a notification to the current client.
 
 ```lua
-TriggerEvent("bduk:notify", {
+TriggerEvent("pluck:notify", {
     type = "success",
     message = "Item added!",
     header = "Done",
@@ -41,7 +41,7 @@ TriggerEvent("bduk:notify", {
 Build and display a UI layout on screen.
 
 ```lua
-exports.bduk:build(layout)
+exports.pluck:build(layout)
 ```
 
 | Param    | Description                                                  |
@@ -52,10 +52,10 @@ exports.bduk:build(layout)
 
 ### `notify(data)`
 
-Send a notification programmatically (same as `bduk:notify`).
+Send a notification programmatically (same as `pluck:notify`).
 
 ```lua
-exports.bduk:notify({
+exports.pluck:notify({
     type = "error",
     message = "Something went wrong!"
 })
@@ -63,4 +63,4 @@ exports.bduk:notify({
 
 | Param  | Description                            |
 | ------ | -------------------------------------- |
-| `data` | Same structure as `bduk:notify` event. |
+| `data` | Same structure as `pluck:notify` event. |

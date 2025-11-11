@@ -1,13 +1,31 @@
 --[[
-    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
-    See the LICENSE file in the root directory for full terms.
+    This file is part of PLUCK (Predefined Lua UI Component Kit).
+    Support honest development retain this credit. Don't be that guy...
 
-    © 2025 Case @ Playing In Traffic
+    MIT License
 
-    Support honest development — retain this credit. Don’t be that guy...
+    Copyright (c) 2025 Playing In Traffic
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 ]]
 
-pluck = setmetatable({}, { __index = _G })
+pluck = {}
 
 pluck.debug_enabled = true
 pluck.debug_colours = {
@@ -75,7 +93,7 @@ function pluck.build_ui(config)
     return pluck.sanitize_ui(config, "ui")
 end
 
---- Copied from BDTK debugging functions to keep BDUK standalone.
+--- Copied from BDTK debugging functions to keep PLUCK standalone.
 --- Returns the current timestamp as a formatted string.
 --- @return string: Formatted time (YYYY-MM-DD HH:MM:SS)
 function pluck.get_current_time()
@@ -87,7 +105,7 @@ function pluck.get_current_time()
     return "0000-00-00 00:00:00"
 end
 
---- Copied from BDTK debugging functions to keep BDUK standalone.
+--- Copied from BDTK debugging functions to keep PLUCK standalone.
 --- Prints a formatted debug message to the console.
 --- @param level string: One of "debug", "info", "success", "warn", "error", "critical", "dev".
 --- @param message string: Pre-formatted message to display.
@@ -97,7 +115,7 @@ function pluck.log(level, message)
     local clr = pluck.debug_colours[level] or "^7"
     local time = pluck.get_current_time()
 
-    print(("%s[%s] [BDUK] [%s]:^7 %s"):format(clr, time, level:upper(), message))
+    print(("%s[%s] [PLUCK] [%s]:^7 %s"):format(clr, time, level:upper(), message))
 end
 
 --- Creates a deep copy of a table, ensuring changes to the copy won't affect the original table.

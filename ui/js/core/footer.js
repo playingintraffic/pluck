@@ -1,10 +1,28 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit) and is licensed under the MIT License.
-    See the LICENSE file in the root directory for full terms.
+    This file is part of PLUCK (Predefined Lua UI Component Kit).
+    Support honest development retain this credit. Don't be that guy...
 
-    © 2025 Case @ Playing In Traffic
+    MIT License
 
-    Support honest development — retain this credit. Don’t be that guy...
+    Copyright (c) 2025 Playing In Traffic
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 */
 
 import { Buttons } from "/ui/js/components/buttons.js"
@@ -98,10 +116,10 @@ export class Footer {
             if ($match.length) {
                 const action = $match.data("action");
                 if (action) {
-                    if (action === "close_builder" && window.bduk_instance) {
-                        window.bduk_instance.close();
-                        window.bduk_instance.destroy();
-                        window.bduk_instance = null;
+                    if (action === "close_builder" && window.pluck_instance) {
+                        window.pluck_instance.close();
+                        window.pluck_instance.destroy();
+                        window.pluck_instance = null;
                         return;
                     }
                     e.preventDefault();
