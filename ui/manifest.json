@@ -7,7 +7,7 @@
         "/ui/css/components/content.css",
         "/ui/css/components/footer.css",
         "/ui/css/components/header.css",
-        "/ui/css/components/modal.css",
+        "/ui/css/core/modal.css",
         "/ui/css/components/tooltip.css",
         "/ui/css/components/sidebar.css",
 

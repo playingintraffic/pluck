@@ -25,9 +25,10 @@
     SOFTWARE.
 */
 
-import { Buttons } from "/ui/js/components/buttons.js"
-import { Namecard } from "/ui/js/components/namecard.js"
-import { send_nui_callback } from "/ui/js/utils.js";
+import { Buttons } from "/ui/core/js/components/buttons.js"
+import { Namecard } from "/ui/core/js/components/namecard.js"
+import { AudioPlayer } from "/ui/core/js/components/audioplayer.js"
+import { send_nui_callback } from "/ui/core/js/utils.js";
 
 /**
  * @class Footer
@@ -42,8 +43,12 @@ export class Footer {
      * @param {Function} [config.on_button_action] - Callback for button clicks.
      */
     constructor({ layout = {}, elements = {}, on_action = null, on_button_action = null }) {
-        this.layout = layout; this.elements = elements;
-        this.on_action = on_action; this.on_button_action = on_button_action;
+        this.layout = layout;
+        this.elements = elements;
+        this.on_action = on_action;
+        this.on_button_action = on_button_action;
+        this.audio_player = null;
+        this.action_callbacks = {}; // Store function references
     }
 
     /** @param {string} section @returns {string} CSS style string for section */
@@ -60,10 +65,17 @@ export class Footer {
             const actions = Array.isArray(elem.actions) ? elem.actions : [elem];
             return `
                 <div class="footer_actions_group">
-                    ${actions.map(a => `
-                        <div class="footer_action ${a.class || ""}" ${a.id ? `id="${a.id}"` : ""} data-action="${a.action}" data-key="${a.key}">
+                    ${actions.map((a, idx) => {
+                        let action_key = a.action;
+                        if (typeof a.action === "function") {
+                            action_key = `action_${idx}`;
+                            this.action_callbacks[action_key] = a.action;
+                        }
+                        return `
+                        <div class="footer_action ${a.class || ""}" ${a.id ? `id="${a.id}"` : ""} data-action="${action_key}" data-key="${a.key}">
                             <span class="footer_key">${a.key}</span><span class="footer_label">${a.label}</span>
-                        </div>`).join("")}
+                        </div>`;
+                    }).join("")}
                 </div>
             `.trim();
         }
@@ -76,6 +88,14 @@ export class Footer {
             return `<div class="footer_group">${items.map(i => this.build_element(i)).join("")}</div>`;
         }
         if (type === "namecard") return new Namecard(elem).get_html();
+        if (type === "audioplayer") {
+            if (AudioPlayer.instance && AudioPlayer.instance.initialized) {
+                console.log("[Footer] AudioPlayer already exists, reusing");
+                return AudioPlayer.instance.get_html();
+            }
+            this.audio_player = new AudioPlayer(elem.autoplay ?? true, elem.randomize ?? true);
+            return this.audio_player.get_html();
+        }
         return "";
     }
 
@@ -96,6 +116,9 @@ export class Footer {
     append_to(container = "#ui_main") {
         $(container).append(this.get_html());
         this.bind_events();
+        if (this.audio_player) {
+            window.audio_player = this.audio_player;
+        }
     }
 
     /** Binds events to footer */
@@ -116,15 +139,13 @@ export class Footer {
             if ($match.length) {
                 const action = $match.data("action");
                 if (action) {
-                    if (action === "close_builder" && window.pluck_instance) {
-                        window.pluck_instance.close();
-                        window.pluck_instance.destroy();
-                        window.pluck_instance = null;
-                        return;
-                    }
                     e.preventDefault();
-                    console.log("[Footer] Keypress triggered action:", action);
-                    send_nui_callback(action, { keypress: true });
+                    if (this.action_callbacks[action]) {
+                        this.action_callbacks[action]();
+                    } else {
+                        if (this.on_action) this.on_action(action);
+                        else send_nui_callback(action, { keypress: true });
+                    }
                 }
             }
         });

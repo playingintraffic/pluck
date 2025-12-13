@@ -36,7 +36,6 @@ export function extract_dataset($el) {
     return data;
 }
 
-
 /**
  * Sends a NUI callback to the UI builder handler.
  * @param {string} action - The name of the action to trigger.
@@ -52,7 +51,7 @@ export async function send_nui_callback(action, dataset = {}, additional = {}) {
         should_close: additional.should_close || false
     };
 
-    const res = await fetch(`https://pluck/nui:handler`, {
+    const res = await fetch(`https://core/nui:handler`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -64,12 +63,13 @@ export async function send_nui_callback(action, dataset = {}, additional = {}) {
 
 /**
  * Resolves a safe image path for internal or external usage.
- * @param {string} image - The image filename or path.
- * @param {string} base - The base directory path (e.g. "/ui/assets/logos/").
+ * @param {string} image - The image filename, path, or full URL.
+ * @param {string} base - The base directory path (e.g. "/ui/assets/logos/"). Ignored if image is a full path.
  * @returns {string} Resolved image path.
  */
 export function resolve_image_path(image, base = "/ui/assets/") {
     if (!image || typeof image !== "string") return "";
     if (/^(nui:\/\/|https?:\/\/)/i.test(image)) return image;
+    if (/^\//.test(image)) return image;
     return base + image;
 }

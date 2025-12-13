@@ -30,7 +30,7 @@ import { Notify } from "/ui/js/components/notify.js";
 import { DUISprite } from "/ui/js/components/dui_sprite.js";
 import { ProgressCircle } from "/ui/js/components/progress_circle.js";
 import { ProgressBar } from "/ui/js/components/progress_bar.js";
-import { Modal } from "/ui/js/components/modal.js";
+import { Modal } from "/ui/js/core/modal.js";
 import { ActionMenu } from "/ui/js/components/action_menu.js"
 
 let interact_dui = null;

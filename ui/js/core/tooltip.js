@@ -25,7 +25,7 @@
     SOFTWARE.
 */
 
-import { Modal } from "/ui/js/components/modal.js";
+import { Modal } from "/ui/js/core/modal.js";
 import { send_nui_callback } from "/ui/js/utils.js";
 
 /**

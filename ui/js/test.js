@@ -26,7 +26,100 @@
 */
 
 /*
-import { Builder } from "/ui/js/builder.js";
+import { Builder } from "/ui/core/js/builder.js";
+
+$(document).ready(() => {
+    new Builder({
+        header: {
+            layout: { left: { justify: "flex-start" }, center: { justify: "center" }, right: { justify: "flex-end" } },
+            elements: {
+                left: [
+                    {
+                        type: "group",
+                        items: [
+                            { type: "logo", image: "pit_100.png" },
+                            { type: "text", title: "PLUCK", subtitle: "Select Input Test" }
+                        ]
+                    }
+                ],
+                center: [{ type: "tabs" }],
+                right: [
+                    {
+                        type: "buttons",
+                        buttons: [
+                            { id: "save", label: "Save", icon: "fa-solid fa-gear", action: "save_changes", class: "primary" },
+                            { id: "exit", label: "Exit", action: "exit_builder", class: "secondary" }
+                        ]
+                    }
+                ]
+            }
+        },
+
+        footer: {
+            layout: { left: { justify: "flex-start" }, center: { justify: "center" }, right: { justify: "flex-end" } },
+            elements: {
+                center: [{ type: "text", text: "Ready to test selects." }]
+            }
+        },
+
+        content: {
+            pages: {
+                select_test_page: {
+                    index: 1,
+                    title: "Select Inputs Test",
+                    layout: { left: 3 },
+                    left: {
+                        type: "input_groups",
+                        title: "Select Inputs",
+                        id: "select_test_inputs",
+                        layout: { columns: 1, scroll_x: "none" },
+                        groups: [
+                            {
+                                header: "Select Group 1",
+                                expandable: false,
+                                inputs: [
+                                    {
+                                        id: "select_1",
+                                        type: "select",
+                                        label: "Choose Option 1",
+                                        value: "b",
+                                        copyable: true,
+                                        options: [
+                                            { value: "a", label: "Option A" },
+                                            { value: "b", label: "Option B" },
+                                            { value: "c", label: "Option C" }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                header: "Select Group 2",
+                                expandable: true,
+                                inputs: [
+                                    {
+                                        id: "select_3",
+                                        type: "select",
+                                        label: "Another Select",
+                                        value: "x",
+                                        options: [
+                                            { value: "x", label: "X" },
+                                            { value: "y", label: "Y" },
+                                            { value: "z", label: "Z" }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    });
+});
+*/
+
+/*
+import { Builder } from "/ui/core/js/builder.js";
 
 $(document).ready(() => {
     new Builder({

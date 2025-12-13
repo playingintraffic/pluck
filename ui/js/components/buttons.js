@@ -25,7 +25,7 @@
     SOFTWARE.
 */
 
-import { Modal } from "/ui/js/components/modal.js"
+import { Modal } from "/ui/js/core/modal.js"
 import { send_nui_callback } from "/ui/js/utils.js";
 
 /**
@@ -83,9 +83,13 @@ $(document).off("click", ".btn").on("click", ".btn", function () {
         return;
     }
 
-    if (action === "close_builder" && window.pluck_instance) {
-        window.pluck_instance.destroy();
-        window.pluck_instance = null;
+    if (action === "close_builder" && window.ui_instance) {
+        if (window.audio_player) {
+            window.audio_player.destroy();
+            window.audio_player = null;
+        }
+        window.ui_instance.destroy();
+        window.ui_instance = null;
         return;
     }
 
@@ -147,9 +151,13 @@ $(document).off("click", ".btn").on("click", ".btn", function () {
     }
 
     send_nui_callback(action, dataset, { should_close }).then(() => {
-        if (should_close && window.pluck_instance) {
-            window.pluck_instance.destroy();
-            window.pluck_instance = null;
+        if (should_close && window.ui_instance) {
+            if (window.audio_player) {
+                window.audio_player.destroy();
+                window.audio_player = null;
+            }
+            window.ui_instance.destroy();
+            window.ui_instance = null;
         }
     }).catch((err) => {
         console.error("[Buttons] Callback failed:", err);
