@@ -49,7 +49,7 @@ export class Builder {
         this.sidebar_config = sidebar; 
         this.content_config = content; 
         this.tooltip = new Tooltip();
-        window.pluck_instance = this;
+        window.ui_instance = this;
         this.main_container = $("#ui_main");
         this.build();
     }

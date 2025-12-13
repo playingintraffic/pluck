@@ -1,0 +1,140 @@
+/* Body */
+.audio_player {
+    position: relative;
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    color: var(--text_primary);
+    flex-direction: row;
+    align-items: center;
+    gap: 1vh;
+    font-family: var(--text_font);
+    padding: 0;
+}
+
+.audio_info_left {
+    display: flex;
+    align-items: center;
+    gap: 0.8vh;
+    flex: 0 1 auto;
+    height: 100%;
+}
+
+/* Artwork */
+.audio_artwork {
+    height: 70%;
+    width: auto;
+    aspect-ratio: 1;
+    border-radius: var(--border_radius_inner);
+    background-size: cover;
+    background-position: center center;
+    flex-shrink: 0;
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Track Info */
+.audio_info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vh;
+    height: 100%;
+    line-height: 0.75;
+}
+
+.audio_text {
+    text-align: left;
+    z-index: 100;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    height: 100%;
+}
+
+.audio_text span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+#current_song_title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+#current_song_artist {
+    font-family: var(--header_font);
+    font-size: 0.8rem;
+    color: var(--text_secondary);
+    line-height: 1;
+}
+
+/* Controls */
+.audio_controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3vh;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.audio_controls button {
+    padding: 0.3vh 1vh;
+    background: var(--background_overlay);
+    border: var(--border_light);
+    border-radius: 2px;
+    color: var(--text_primary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    opacity: 0.75;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3vh;
+}
+
+.audio_controls button:hover {
+    opacity: 1;
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.audio_controls button:active {
+    transform: scale(0.92);
+}
+
+/* Progress Bar */
+.audio_progress {
+    position: absolute;
+    bottom: 0.5vh;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.2vh;
+    background: var(--background_overlay);
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+}
+
+.progress_bar {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    border-radius: 0;
+    box-shadow: none;
+}

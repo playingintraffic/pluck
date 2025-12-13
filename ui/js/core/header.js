@@ -68,7 +68,7 @@ export class Header {
         }
 
         if (type === "tabs") {
-            const pages = window.pluck_instance?.content?.pages || {};
+            const pages = window.ui_instance?.content?.pages || {};
             const tabs = Array.isArray(elem.tabs) ? elem.tabs : Object.values(elem.tabs || {});
             const valid_tabs = tabs.sort((a, b) => (a.index ?? 999) - (b.index ?? 999)).map((t, i) => ({ ...t, default: i === 0 }));
 

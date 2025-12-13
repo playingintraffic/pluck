@@ -64,13 +64,13 @@ handlers.build_ui = (data) => {
         return;
     }
 
-    if (window.pluck_instance && typeof window.pluck_instance.destroy === "function") {
-        window.pluck_instance.destroy();
-        window.pluck_instance = null;
+    if (window.ui_instance && typeof window.ui_instance.destroy === "function") {
+        window.ui_instance.destroy();
+        window.ui_instance = null;
     }
 
     const builder = new Builder(data.payload);
-    window.pluck_instance = builder;
+    window.ui_instance = builder;
 };
 
 /**
@@ -78,10 +78,15 @@ handlers.build_ui = (data) => {
  * @function handlers.close_ui
  */
 handlers.close_ui = () => {
-    if (window.pluck_instance && typeof window.pluck_instance.destroy === "function") {
-        window.pluck_instance.close();
-        window.pluck_instance.destroy();
-        window.pluck_instance = null;
+    if (window.ui_instance && typeof window.ui_instance.destroy === "function") {
+        window.ui_instance.close();
+        window.ui_instance.destroy();
+        window.ui_instance = null;
+    }
+
+    if (window.audio_player) {
+        window.audio_player.destroy();
+        window.audio_player = null;
     }
 };
 

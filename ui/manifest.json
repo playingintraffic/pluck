@@ -4,12 +4,12 @@
     "css": [
         "/ui/css/fonts.css",
         "/ui/css/style.css",
-        "/ui/css/components/content.css",
-        "/ui/css/components/footer.css",
-        "/ui/css/components/header.css",
+        "/ui/css/core/content.css",
+        "/ui/css/core/footer.css",
+        "/ui/css/core/header.css",
         "/ui/css/core/modal.css",
-        "/ui/css/components/tooltip.css",
-        "/ui/css/components/sidebar.css",
+        "/ui/css/core/tooltip.css",
+        "/ui/css/core/sidebar.css",
 
         "/ui/css/components/buttons.css",
         "/ui/css/components/notify.css",
@@ -20,6 +20,7 @@
         "/ui/css/components/progress_circle.css",
         "/ui/css/components/progress_bar.css",
         "/ui/css/components/action_menu.css",
+        "/ui/css/components/audioplayer.css",
 
         "/ui/css/themes/default.css"
     ],

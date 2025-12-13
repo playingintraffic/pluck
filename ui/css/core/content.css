@@ -1,0 +1,97 @@
+/*
+    This file is part of PLUCK (Predefined Lua UI Component Kit).
+    Support honest development retain this credit. Don't be that guy...
+
+    MIT License
+
+    Copyright (c) 2025 Playing In Traffic
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+*/
+
+/* Container */
+.content_grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2vw;
+    height: calc(100vh - 16vh);
+    width: 100%;
+    padding: 1vw 3vw;
+    box-sizing: border-box;
+    color: var(--text_primary);
+    font-family: var(--text_font);
+    background: rgba(0, 0, 0, 0.0);
+    z-index: 11;
+}
+
+/* Sections */
+.content_section {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    min-width: 0;
+}
+
+.placeholder_section {
+    flex-grow: 1;
+    min-height: 1px;
+    width: 100%;
+}
+
+/* Titles */
+.content_title {
+    width: 100%;
+}
+.content_title h3 {
+    width: 100%;
+    display: flex;
+    color: var(--text_primary);
+    font-family: var(--header_font);
+    font-size: 2rem;
+    padding: 1px;
+    padding-bottom: 0.5vh;
+    padding-right: 0.5vh;
+    font-weight: normal;
+    position: relative;
+    margin-bottom: 1vh;
+    text-shadow: var(--text_shadow);
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+}
+.content_title h3::after {
+    position: absolute;
+    bottom: 0.1vh;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 0.1vh;
+    background: var(--text_tertiary);
+}
+
+/* Body */
+.content_body {
+    flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}

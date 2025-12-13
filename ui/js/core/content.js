@@ -81,7 +81,7 @@ export class Content {
                 $(`.content_body.${s}`).html(`<div class="placeholder_section"></div>`);
             }
         }
-        window.pluck_instance?.tooltip?.bind_tooltips();
+        window.ui_instance?.tooltip?.bind_tooltips();
     }
 
 

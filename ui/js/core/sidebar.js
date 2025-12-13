@@ -102,9 +102,9 @@ export class Sidebar {
             }
 
             send_nui_callback(action, dataset, { should_close }).then(() => {
-                if (should_close && window.pluck_instance) {
-                    window.pluck_instance.destroy();
-                    window.pluck_instance = null;
+                if (should_close && window.ui_instance) {
+                    window.ui_instance.destroy();
+                    window.ui_instance = null;
                 }
             });
         };
