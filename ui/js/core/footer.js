@@ -25,10 +25,10 @@
     SOFTWARE.
 */
 
-import { Buttons } from "/ui/core/js/components/buttons.js"
-import { Namecard } from "/ui/core/js/components/namecard.js"
-import { AudioPlayer } from "/ui/core/js/components/audioplayer.js"
-import { send_nui_callback } from "/ui/core/js/utils.js";
+import { Buttons } from "/ui/js/components/buttons.js"
+import { Namecard } from "/ui/js/components/namecard.js"
+import { AudioPlayer } from "/ui/js/components/audioplayer.js"
+import { send_nui_callback } from "/ui/js/utils.js";
 
 /**
  * @class Footer
