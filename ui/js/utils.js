@@ -51,7 +51,7 @@ export async function send_nui_callback(action, dataset = {}, additional = {}) {
         should_close: additional.should_close || false
     };
 
-    const res = await fetch(`https://core/nui:handler`, {
+    const res = await fetch(`https://pluck/nui:handler`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
