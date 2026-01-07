@@ -47,6 +47,12 @@ Less "learning React" - more "just show the damn button."
 - **Modal** - With selects, colors, text, number sliders, and more.
 - **Namecards** - Beautiful profile-style cards.
 - **Notify** - Simple, clean in-UI notifications.
+- **Progress Bar** - Modern notched progress bar.
+- **Progress Circle** - Modern notched progress circle.
+- **DUI** - Detailed DUI sprite setup with support for keypresses, progressbars and more.
+- **Action Menu** - A clean menu system with sub menu support.
+- **Audio Player** - Attach a custom audio player to any of your UI footers.
+- **Slots** - Detailed slots class, can be used to make inventories, supports slot groups, paperdolls, and generic max slot layouts.
 
 ### Extras
 

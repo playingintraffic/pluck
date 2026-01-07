@@ -21,6 +21,7 @@
         "/ui/css/components/progress_bar.css",
         "/ui/css/components/action_menu.css",
         "/ui/css/components/audioplayer.css",
+        "/ui/css/components/slots.css",
 
         "/ui/css/themes/default.css"
     ],

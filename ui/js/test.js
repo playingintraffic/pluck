@@ -26,7 +26,173 @@
 */
 
 /*
-import { Builder } from "/ui/core/js/builder.js";
+// Slots class test
+import { Builder } from "/ui/js/builder.js";
+
+$(document).ready(() => {
+    const builder = new Builder({
+        header: {
+            layout: { left: { justify: "flex-start" }, center: { justify: "center" }, right: { justify: "flex-end" } },
+            elements: {
+                left: [
+                    {
+                        type: "group",
+                        items: [
+                            { type: "logo", image: "pit_100.png" },
+                            { type: "text", title: "PLUCK", subtitle: "Slots Class - Can be used for inventories :)" }
+                        ]
+                    }
+                ],
+                center: [{ type: "tabs" }],
+                right: [
+                    {
+                        type: "group",
+                        items: [
+                            { type: "text", subtitle: "Server ID: 1" }
+                        ]
+                    }
+                ]
+            }
+        },
+
+        footer: {
+            layout: { left: { justify: "flex-start" }, center: { justify: "center" }, right: { justify: "flex-end" } },
+            elements: {
+                right: [
+                    {
+                        type: "actions",
+                        actions: [
+                            { key: "ESCAPE", label: "Close" },
+                            { key: "E", label: "Confirm" }
+                        ]
+                    }
+                ]
+            }
+        },
+
+        content: {
+            pages: {
+                inventory_page: {
+                    index: 1,
+                    title: "Inventory",
+                    layout: { left: 4, center: 4, right: 4 },
+
+                    // CENTER: Positioned loadout slots (paper doll)
+                    center: {
+                        type: "slots",
+                        layout: { scroll_y: "none" },
+                        groups: [
+                            {
+                                id: "clothing_toggles",
+                                layout_type: "positioned",
+                                collapsible: false,
+                                slots: [
+                                    { id: "hat", label: "Hat", position: { top: "0%", left: "0%" }, size: "80px" },
+                                    { id: "mask", label: "Mask", position: { top: "0%", right: "0%" }, size: "80px" },
+                                    { id: "glasses", label: "Glasses", position: { top: "17%", left: "0%" }, size: "80px" },
+                                    { id: "ear", label: "Earrings", position: { top: "17%", right: "0%" }, size: "80px" },
+                                    { id: "neck", label: "Necklace", position: { top: "34%", left: "0%" }, size: "80px" },
+                                    { id: "shirt", label: "Shirt", position: { top: "34%", right: "0%" }, size: "80px" },
+                                    { id: "gloves", label: "Gloves", position: { bottom: "34%", left: "0%" }, size: "80px" },
+                                    { id: "bracelet", label: "Bracelet", position: { bottom: "34%", right: "0%" }, size: "80px" },
+                                    { id: "watch", label: "Watch", position: { bottom: "17%", left: "0%" }, size: "80px" },
+                                    { id: "pants", label: "Pants", position: { bottom: "17%", right: "0%" }, size: "80px" },
+                                    { id: "bag", label: "Bag", position: { bottom: "0%", left: "0%" }, size: "80px" },
+                                    { id: "top", label: "Top", position: { bottom: "0%", right: "0%" }, size: "80px" },
+                                    { id: "hair", label: "Hair", position: { top: "0%", left: "21%" }, size: "80px" },
+                                    { id: "reset", label: "Reset", position: { top: "0%", right: "21%" }, size: "80px" },
+                                    { id: "visor", label: "Visor", position: { bottom: "0%", left: "21%" }, size: "80px" },
+                                    { id: "shoes", label: "Shoes", position: { bottom: "0%", right: "21%" }, size: "80px" }
+                                ],
+                                items: {}
+                            }
+                        ]
+                    },
+                    
+                    // LEFT: Player's equipped items (grouped)
+                    left: {
+                        type: "slots",
+                        title: { text: "Equipment", span: `<i class="fa-solid fa-weight-hanging"></i> 45/120` },
+                        groups: [
+                            { 
+                                id: "vest", 
+                                title: "Tactical Vest", 
+                                span: `<i class="fa-solid fa-shield"></i> 8/8`, 
+                                slot_count: 12, 
+                                columns: 6, 
+                                slot_size: "80px", 
+                                collapsible: true, 
+                                collapsed: false,
+                                items: {
+                                    "1": { id: "ammo_pistol", image: "/ui/assets/items/ammo_pistol.png", quantity: 50, category: "ammunition", on_hover: { title: "9mm Ammunition", description: ["Standard 9mm rounds for pistols"], rarity: "common" } },
+                                    "2": { id: "pistol_mag_extended", image: "/ui/assets/items/pistol_mag_extended.png", quantity: 2, category: "magazine", on_hover: { title: "Extended Pistol Magazine", description: ["High-capacity magazine for pistols"], rarity: "rare" } }
+                                }
+                            },
+                            { 
+                                id: "backpack", 
+                                title: "Backpack", 
+                                span: `<i class="fa-solid fa-bag-shopping"></i> 20/20`, 
+                                slot_count: 24, 
+                                columns: 6, 
+                                slot_size: "80px", 
+                                collapsible: true, 
+                                collapsed: false,
+                                items: {
+                                    "1": { id: "cabbage", image: "/ui/assets/items/cabbage.png", quantity: 5, category: "food", on_hover: { title: "Cabbage", description: ["Fresh cabbage. Restores hunger."], rarity: "common" } },
+                                    "2": { id: "corn", image: "/ui/assets/items/corn.png", quantity: 8, category: "food", on_hover: { title: "Corn", description: ["Sweet corn. Can be eaten or cooked."], rarity: "common" } }
+                                }
+                            },
+                            { 
+                                id: "belt", 
+                                title: "Utility Belt", 
+                                span: `<i class="fa-solid fa-circle"></i> 6/6`, 
+                                slot_count: 6, 
+                                columns: 6, 
+                                slot_size: "80px", 
+                                collapsible: true, 
+                                collapsed: false,
+                                items: {
+                                    "1": { id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 72 }, on_hover: { title: "9mm Pistol", description: ["Holstered sidearm"], rarity: "uncommon" } }
+                                }
+                            },
+                            { 
+                                id: "pockets", 
+                                title: "Pockets", 
+                                span: `<i class="fa-solid fa-hand"></i> 4/4`, 
+                                slot_count: 6, 
+                                columns: 6, 
+                                slot_size: "80px", 
+                                collapsible: true, 
+                                collapsed: false, 
+                                show_slot_numbers: true,
+                                items: {
+                                    "1": { id: "weed", image: "/ui/assets/items/weed.png", quantity: 3, category: "plant", on_hover: { title: "Cannabis", description: ["Medicinal plant material"], rarity: "uncommon" } }
+                                }
+                            }
+                        ]
+                    },
+                    
+                    // RIGHT: Vicinity/Ground inventory
+                    right: {
+                        type: "slots",
+                        title: { text: "Vicinity", span: `<i class="fa-solid fa-location-dot"></i> Ground` },
+                        layout: { columns: 6, slot_size: "80px" },
+                        slot_count: 80,
+                        items: {
+                            "1": { id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 55 }, on_hover: { title: "9mm Pistol", description: ["Found on ground"], rarity: "uncommon" } },
+                            "2": { id: "ammo_pistol", image: "/ui/assets/items/ammo_pistol.png", quantity: 48, category: "ammunition", on_hover: { title: "9mm Ammunition", rarity: "common" } },
+                            "3": { id: "cabbage", image: "/ui/assets/items/cabbage.png", quantity: 3, category: "food", on_hover: { title: "Cabbage", rarity: "common" } }
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+*/
+
+/*
+import { Builder } from "/ui/js/builder.js";
 
 $(document).ready(() => {
     new Builder({
@@ -119,7 +285,7 @@ $(document).ready(() => {
 */
 
 /*
-import { Builder } from "/ui/core/js/builder.js";
+import { Builder } from "/ui/js/builder.js";
 
 $(document).ready(() => {
     new Builder({

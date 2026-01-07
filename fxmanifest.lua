@@ -44,7 +44,7 @@ fx_version "cerulean"
 games { "gta5", "rdr3" }
 
 name "pluck"
-version "1.2.0"
+version "1.3.0"
 description "PLUCK - Predefined Lua UI Component Kit"
 author "PlayingInTraffic"
 repository "https://github.com/playingintraffic/pluck"
@@ -67,6 +67,3 @@ shared_script "init.lua"
 shared_scripts {
     "scripts/*.lua"
 }
-
---- Test code you can remove this :)
-client_script "test.lua"

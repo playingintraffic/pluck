@@ -25,97 +25,62 @@
     SOFTWARE.
 ]]
 
-if not pluck.is_server then 
+if pluck.is_server then
 
-    --- @section Variables
+    --- Builds an action menu on the specified client.
+    --- @param source number: The player source ID to send the menu to.
+    --- @param menu table: The menu configuration table.
+    exports("action_menu", function(source, menu)
+        if not source or not menu then pluck.log("error", "action_menu: Invalid params provided.") return end
 
-    local registered_functions = {}
+        pluck.log("info", ("action_menu: Sending menu to [%s]"):format(source))
+        TriggerClientEvent("pluck:action_menu", source, menu)
+    end)
 
-    --- @section Local Functions
+else
 
-    --- Registers a function under a unique key for callbacks.
-    --- @param label string: The unique key to associate with the function.
-    --- @param func function: The function to register.
-    local function register_function(label, func)
-        registered_functions[label] = func
-    end
+    --- @section Functions
 
-    --- Calls a registered function by its label.
-    --- @param label string: The key associated with the function.
-    --- @return The result of the function, or false if not found.
-    local function call_registered_function(label)
-        if registered_functions[label] then
-            return registered_functions[label]()
-        else
-            print('Function with label ' .. label .. ' not found.')
-            return false
-        end
-    end
+    --- Sends an action menu to the NUI layer and sets focus.
+    --- @param menu table: Menu config table to build.
+    local function action_menu(menu)
+        if not menu then pluck.log("error", "action_menu: Menu config missing.") return end
 
-    --- Processes and filters menu options, replacing functions with callable references.
-    --- @param options table: The menu options to process.
-    --- @return A filtered table of menu options.
-    local function filter_menu(options)
-        local processed_options = {}
-        for _, option in ipairs(options) do
-            local processed_option = pluck.deep_copy(option)
-            if type(processed_option.can_interact) == 'function' then
-                local label = 'can_interact_' .. tostring(option.label):gsub(' ', '_'):gsub('%W', '')
-                register_function(label, processed_option.can_interact)
-                local success, result = pcall(call_registered_function, label)
-                processed_option.interactable = success and result or false
-                processed_option.can_interact = nil
-            else
-                processed_option.interactable = processed_option.disabled ~= true
-            end
-            if processed_option.submenu then
-                processed_option.submenu = filter_menu(processed_option.submenu)
-            end
-            processed_options[#processed_options + 1] = processed_option
-        end
-        return processed_options
-    end
+        local safe_menu = pluck.build_ui(menu)
+        if not safe_menu then pluck.log("error", "action_menu: Menu config wasn't returned after sanitize.") return end
 
-    --- Opens the action menu with given data.
-    -- @param menu_data table: The menu data to open.
-    local function create_action_menu(menu_data)
-        local filtered_menu = filter_menu(menu_data)
+        pluck.log("info", "action_menu: Building action menu and setting NUI focus.")
         SetNuiFocus(true, true)
         SendNUIMessage({
             func = 'create_action_menu',
-            payload = filtered_menu
+            payload = safe_menu
         })
     end
 
-    --- Exports and Utility Bindings
-    exports('action_menu', create_action_menu)
+    --- Exported client-side function to build an action menu.
+    --- @param menu table: Full menu configuration.
+    exports("action_menu", action_menu)
+
+    --- @section Events
+
+    --- Receives and builds an action menu triggered by the server.
+    --- @param menu table: Menu configuration.
+    RegisterNetEvent("pluck:action_menu", function(menu)
+        pluck.log("dev", "Event triggered: action_menu")
+        action_menu(menu)
+    end)
+
+    --- Event to close action menu.
+    RegisterNetEvent("pluck:action_menu:close", function()
+        SendNUIMessage({ func = 'close_action_menu' })
+    end)
 
     --- @section NUI Callbacks
 
-    --- Event to close the action menu if required.
-    RegisterNUICallback('close_action_menu', function()
+    --- Removes focus from the NUI when action menu closes.
+    RegisterNUICallback("action_menu:close", function()
+        pluck.log("debug", "action_menu:close - Focus cleared.")
         SetNuiFocus(false, false)
-        active = false
-        SendNUIMessage({ action = 'close_action_menu' })
-    end)
-
-    --- Callback to trigger events from the menu
-    RegisterNUICallback('action_menu_trigger_event', function(data)
-        local action_handlers = {
-            ['function'] = function(action) action(data.action) end,
-            ['client_event'] = function(action) TriggerEvent(action, data.params) end,
-            ['server_event'] = function(action) TriggerServerEvent(action, data.params) end
-        }
-        local handler = action_handlers[data.action_type]
-        if not handler then
-            print('Error: Incorrect action type for key')
-            return
-        end
-        handler(data.action)
-        if data.should_close then
-            SetNuiFocus(false, false)
-            SendNUIMessage({ action = 'close_action_menu' })
-        end
     end)
 
 end
@@ -138,19 +103,27 @@ RegisterCommand('testmenu', function()
                             label = 'Do Something',
                             icon = 'fa-solid fa-cog',
                             colour = '#e4ad29',
-                            action_type = 'client_event',
-                            action = 'pluck:test_action',
-                            params = { some = 'data' }
+                            on_action = function(data)
+                                print('Submenu action triggered!', json.encode(data or {}))
+                            end
+                        },
+                        {
+                            label = 'Function Action',
+                            icon = 'fa-solid fa-bolt',
+                            colour = '#4bc0c8',
+                            on_action = function(data)
+                                print('Direct function called!', json.encode(data or {}))
+                            end
                         }
                     }
                 },
                 {
-                    label = 'Server Event',
+                    label = 'Another Action',
                     icon = 'fa-solid fa-cloud',
                     colour = '#4bc0c8',
-                    action_type = 'client_event',
-                    action = 'pluck:test_action',
-                    params = { some = 'data' }
+                    on_action = function(data)
+                        print('Another action!', json.encode(data or {}))
+                    end
                 }
             }
         },
@@ -158,15 +131,11 @@ RegisterCommand('testmenu', function()
             label = 'Quick Action',
             icon = 'fa-solid fa-bolt',
             colour = '#ffcc00',
-            action_type = 'client_event',
-            action = 'pluck:test_action',
-            params = { some = 'data' }
+            on_action = function(data)
+                print('Quick action triggered!', json.encode(data or {}))
+            end
         }
     }
 
     exports.pluck:action_menu(test_menu)
-end)
-
-RegisterNetEvent('pluck:test_action', function(data)
-    print('Test Action triggered!', json.encode(data))
 end)

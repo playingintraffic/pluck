@@ -25,6 +25,8 @@
     SOFTWARE.
 */
 
+import { send_nui_callback } from "/ui/js/utils.js";
+
 export class ActionMenu {
     constructor() {
         this.menu_stack = [];
@@ -147,16 +149,14 @@ export class ActionMenu {
      * Handles the click event for an action.
      * @param {Object} action - The action details.
      */
-    handle_action_click(action) {
+    async handle_action_click(action) {
         if (action.submenu) {
             this.create_menu(action.submenu);
-        } else {
-            $.post(`https://${GetParentResourceName()}/action_menu_trigger_event`, JSON.stringify({
-                action_type: action.action_type,
-                action: action.action,
-                params: action.params
-            }));
-            if (this.menu_stack.length === 1) {
+        } else if (action.action) {
+            const should_close = this.menu_stack.length === 1;
+            await send_nui_callback(action.action, {}, { should_close });
+            
+            if (should_close) {
                 this.is_menu_active = false;
                 this.close();
             }
@@ -180,43 +180,14 @@ export class ActionMenu {
      */
     close() {
         this.menu_container.empty();
+        this.menu_stack = [];
         this.is_menu_active = false;
-        $.post(`https://${GetParentResourceName()}/close_action_menu`, JSON.stringify({}));
+        
+        // Send close callback to remove focus
+        fetch(`https://pluck/action_menu:close`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({}),
+        });
     }
 }
-
-
-const test_menu = [
-    {
-        label: 'Main Menu',
-        icon: 'fa-solid fa-bars',
-        colour: '#e4ad29',
-        submenu: [
-            {
-                label: 'Submenu 1',
-                icon: 'fa-solid fa-arrow-right',
-                colour: '#e4ad29',
-                submenu: [
-                    {
-                        label: 'Action 1',
-                        icon: 'fa-solid fa-cog',
-                        colour: '#e4ad29',
-                        action_type: 'client_event',
-                        action: 'some_event',
-                        params: {}
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        label: 'Quick Action',
-        icon: 'fa-solid fa-bolt',
-        action_type: 'client_event',
-        action: 'quick_event',
-        params: {}
-    },
-];
-
-//const action_menu = new ActionMenu();
-//action_menu.create_menu(test_menu);

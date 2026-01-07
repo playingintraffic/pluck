@@ -1,0 +1,275 @@
+.slot_hotkey {
+    position: absolute;
+    top: 0.5vh;
+    left: 0.5vh;
+    background: var(--background_overlay);
+    color: var(--text_primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3vh 0.6vh;
+    border-radius: var(--border_radius_inner);
+    z-index: 4;
+    pointer-events: none;
+}
+
+.slot_groups_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    width: 100%;
+}
+
+.slot_group {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.slot_group_title {
+    padding: 1vh 1.5vh;
+    background: var(--background_main);
+    border: var(--border_dark);
+    border-radius: var(--border_radius_inner);
+    user-select: none;
+}
+
+.slot_group_title.collapsible {
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.slot_group_title.collapsible:hover {
+    background: var(--background_hover);
+}
+
+.slot_group_title h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text_primary);
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+}
+
+.slot_group_title h4 i {
+    font-size: 0.7rem;
+    color: var(--text_secondary);
+    transition: transform 0.2s ease;
+}
+
+.slot_group_title h4 span {
+    margin-left: auto;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text_secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.35vh;
+}
+
+.slots_container {
+    display: grid;
+    gap: 1.5vh;
+    padding: 1vh 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    max-height: 10000px;
+    opacity: 1;
+}
+
+.slots_container.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.body_slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--background_main);
+    border: var(--border_dark);
+    border-radius: var(--border_radius_inner);
+    box-shadow: var(--shadow_medium);
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.body_slot:hover {
+    background: var(--background_hover);
+    border-color: var(--accent);
+}
+
+.body_slot.slot_empty {
+    border-color: var(--text_tertiary);
+}
+
+.body_slot.slot_occupied {
+    cursor: grab;
+}
+
+.body_slot.slot_occupied:active {
+    cursor: grabbing;
+}
+
+.body_slot.slot_drop_hover {
+    background: rgba(100, 200, 255, 0.2) !important;
+    outline: 3px dashed var(--accent);
+    outline-offset: -3px;
+}
+
+.body_slot.dragging {
+    opacity: 0.4;
+}
+
+.body_slot::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.body_slot.rarity_common::before { 
+    background: linear-gradient(to top, var(--rarity_common), transparent 70%); 
+}
+.body_slot.rarity_uncommon::before { 
+    background: linear-gradient(to top, var(--rarity_uncommon), transparent 70%); 
+}
+.body_slot.rarity_rare::before { 
+    background: linear-gradient(to top, var(--rarity_rare), transparent 70%); 
+}
+.body_slot.rarity_epic::before { 
+    background: linear-gradient(to top, var(--rarity_epic), transparent 70%); 
+}
+.body_slot.rarity_legendary::before { 
+    background: linear-gradient(to top, var(--rarity_legendary), transparent 70%); 
+}
+
+.body_slot.rarity_common { 
+    border-color: var(--rarity_common); 
+}
+.body_slot.rarity_uncommon { 
+    border-color: var(--rarity_uncommon); 
+}
+.body_slot.rarity_rare { 
+    border-color: var(--rarity_rare); 
+}
+.body_slot.rarity_epic { 
+    border-color: var(--rarity_epic); 
+}
+.body_slot.rarity_legendary { 
+    border-color: var(--rarity_legendary); 
+}
+
+.body_slot_image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.body_slot_image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.slot_footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.slot_quantity {
+    margin-right: 0.5vh;
+    margin-bottom: 0.2vh;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text_primary);
+}
+
+.slot_progress {
+    width: 100%;
+    height: 0.5vh;
+    background: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.slot_progress_fill {
+    height: 100%;
+    transition: width 0.2s ease;
+}
+
+.body_slot.rarity_common .slot_progress_fill { 
+    background: var(--rarity_common); 
+}
+.body_slot.rarity_uncommon .slot_progress_fill { 
+    background: var(--rarity_uncommon); 
+}
+.body_slot.rarity_rare .slot_progress_fill { 
+    background: var(--rarity_rare); 
+}
+.body_slot.rarity_epic .slot_progress_fill{ 
+    background: var(--rarity_epic); 
+}
+.body_slot.rarity_legendary .slot_progress_fill { 
+    background: var(--rarity_legendary); 
+}
+.body_slot:not([class*="rarity_"]) .slot_progress_fill { 
+    background: var(--accent); 
+}
+
+.slots_container_positioned {
+    position: relative;
+    height: 100vh;
+}
+
+.positioned_slot_wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    gap: 0.5vh;
+}
+
+.positioned_slot_wrapper .body_slot {
+    flex-shrink: 0;
+}
+
+.slot_label {
+    width: 100%;
+    border: var(--border_dark);
+    border-radius: var(--border_radius_inner);
+    color: var(--text_secondary);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    pointer-events: none;
+    background: var(--background_main);
+}
+
+.positioned_slot_wrapper,
+.positioned_slot_wrapper *:not(.body_slot) {
+  pointer-events: none;
+}
+
+.positioned_slot_wrapper .body_slot {
+  pointer-events: auto;
+}
