@@ -2,7 +2,7 @@
 
 # PLUCK - Predefined LUA UI Component Kit
 
-Read the docs: **[Documentation](https://playingintraffic.site/docs/pluck)**
+Read the docs: **[Documentation](https://boii.dev)**
 
 ## What is PLUCK?
 
