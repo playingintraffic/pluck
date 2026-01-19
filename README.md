@@ -1,4 +1,4 @@
-![pit_pluck_thumb](https://github.com/user-attachments/assets/6ae74c86-3294-493c-a5c0-98dd2c31df0c)
+![PLUCKTHUMB2](https://github.com/user-attachments/assets/1b739384-457d-4dbc-bfe0-b9d650254985)
 
 # PLUCK - Predefined LUA UI Component Kit
 
