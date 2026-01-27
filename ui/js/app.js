@@ -1,28 +1,16 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
 
 import { Builder } from "/ui/js/builder.js";
@@ -31,10 +19,15 @@ import { DUISprite } from "/ui/js/components/dui_sprite.js";
 import { ProgressCircle } from "/ui/js/components/progress_circle.js";
 import { ProgressBar } from "/ui/js/components/progress_bar.js";
 import { Modal } from "/ui/js/core/modal.js";
-import { ActionMenu } from "/ui/js/components/action_menu.js"
+import { ActionMenu } from "/ui/js/components/action_menu.js";
+import { SlotPopup } from "/ui/js/components/slot_popup.js";
+import { InteractionHint } from "/ui/js/components/interaction_hint.js";
+import { OptionsSelector } from "/ui/js/components/option_selector.js";
 
 let interact_dui = null;
 let action_menu = null;
+let interaction_hint = null;
+let options_selector = null;
 
 /**
  * Notification instance
@@ -45,6 +38,31 @@ const notify = new Notify({
     position: "right-center",
     fill_direction: "up"
 });
+
+/**
+ * Slot popup instance
+ * @type {SlotPopup}
+ */
+const slot_popup = new SlotPopup({
+    position: "bottom-center"
+});
+
+window.test_slot_popup = () => {
+    const test_items = [
+        { item_id: "water", image: "/ui/assets/items/water.png", quantity: 5, action: "added", rarity: "common" },
+        { item_id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, action: "added", rarity: "rare" },
+        { item_id: "cash", image: "/ui/assets/items/cash.png", quantity: 100, action: "removed", rarity: "uncommon" },
+        { item_id: "ammo_9mm", image: "/ui/assets/items/ammo_9mm.png", quantity: 50, action: "added", rarity: "legendary" }
+    ];
+
+    let delay = 0;
+    test_items.forEach((item, index) => {
+        setTimeout(() => {
+            slot_popup.show(item);
+        }, delay);
+        delay += 5000;
+    });
+};
 
 /**
  * Registered message handlers for NUI callbacks.
@@ -185,6 +203,221 @@ handlers.close_action_menu = () => {
         action_menu.close();
     }
 }
+
+
+/**
+ * Updates interaction hint
+ */
+handlers.update_interaction_hint = (data) => {
+    if (!interaction_hint) {
+        interaction_hint = new InteractionHint('activities_container');
+    }
+    interaction_hint.set_data(data.payload);
+}
+
+/**
+ * Updates interaction hint quantity
+ */
+handlers.update_hint_quantity = (data) => {
+    if (interaction_hint) {
+        interaction_hint.update_quantity(data.payload.amount);
+    }
+}
+
+/**
+ * Clears interaction hint
+ */
+handlers.clear_interaction_hint = () => {
+    if (interaction_hint) {
+        interaction_hint.clear();
+    }
+}
+
+/**
+ * Destroys interaction hint
+ */
+handlers.destroy_interaction_hint = () => {
+    if (interaction_hint) {
+        interaction_hint.destroy();
+        interaction_hint = null;
+    }
+}
+
+/**
+ * Sets options in selector
+ */
+handlers.set_options = (data) => {
+    if (!options_selector) {
+        options_selector = new OptionsSelector();
+    }
+    options_selector.set_options(data.payload.title, data.payload.options);
+}
+
+/**
+ * Shows options selector
+ */
+handlers.show_options = () => {
+    if (options_selector) {
+        options_selector.show();
+    }
+}
+
+/**
+ * Hides options selector
+ */
+handlers.hide_options = () => {
+    if (options_selector) {
+        options_selector.hide();
+    }
+}
+
+/**
+ * Destroys options selector
+ */
+handlers.destroy_options_selector = () => {
+    if (options_selector) {
+        options_selector.destroy();
+        options_selector = null;
+    }
+}
+
+window.test_fishing_ui = () => {
+    const test_baits = [
+        {
+            id: 'weed',
+            label: 'Weed',
+            image: '/ui/assets/items/weed.png',
+            quantity: 5,
+            enabled: true
+        },
+        {
+            id: 'cash',
+            label: 'Cash',
+            image: '/ui/assets/items/cash.png',
+            quantity: 2,
+            enabled: true
+        },
+        {
+            id: 'weapon_pistol',
+            label: 'Pistol',
+            image: '/ui/assets/items/weapon_pistol.png',
+            quantity: 0,
+            enabled: false
+        },
+        {
+            id: 'tomato',
+            label: 'Tomato',
+            image: '/ui/assets/items/tomato.png',
+            quantity: 10,
+            enabled: true
+        }
+    ];
+
+    const interaction_hint = new InteractionHint('activities_container');
+    const options_selector = new OptionsSelector('options_container');
+
+    options_selector.set_options(test_baits, 'SELECT ITEM');
+    options_selector.show();
+
+    setTimeout(() => {
+        interaction_hint.set_data({
+            image: '/ui/assets/items/tomato.png',
+            label: 'Tomato',
+            quantity: 5,
+            action_text: 'Press F to thow or E to change item'
+        });
+    }, 2000);
+
+    setTimeout(() => {
+        interaction_hint.update_quantity(3);
+    }, 5000);
+
+    setTimeout(() => {
+        interaction_hint.clear();
+    }, 8000);
+};
+
+window.test_action_menu = () => {
+    if (action_menu) {
+        action_menu.close();
+        action_menu = null;
+    }
+
+    action_menu = new ActionMenu();
+
+    action_menu.create_menu([
+        {
+            label: "Main Menu",
+            icon: "fa-solid fa-bars",
+            colour: "#e4ad29",
+            submenu: [
+                {
+                    label: "Submenu 1",
+                    icon: "fa-solid fa-arrow-right",
+                    colour: "#e4ad29",
+                    submenu: [
+                        {
+                            label: "Do Something",
+                            icon: "fa-solid fa-cog",
+                            colour: "#e4ad29",
+                            on_action: () => {
+                                console.log("Do Something clicked");
+                            }
+                        },
+                        {
+                            label: "Another Thing",
+                            icon: "fa-solid fa-bolt",
+                            colour: "#4bc0c8",
+                            on_action: () => {
+                                console.log("Another Thing clicked");
+                            }
+                        }
+                    ]
+                },
+                {
+                    label: "Cloud Action",
+                    icon: "fa-solid fa-cloud",
+                    colour: "#4bc0c8",
+                    on_action: () => {
+                        console.log("Cloud action clicked");
+                    }
+                }
+            ]
+        },
+        {
+            label: "Quick Action",
+            icon: "fa-solid fa-bolt",
+            colour: "#ffcc00",
+            on_action: () => {
+                console.log("Quick action clicked");
+            }
+        },
+        {
+            label: "Quick Action",
+            icon: "fa-solid fa-bolt",
+            colour: "#ffcc00",
+            on_action: () => {
+                console.log("Quick action clicked");
+            }
+        },
+        {
+            label: "Quick Action",
+            icon: "fa-solid fa-bolt",
+            colour: "#ffcc00",
+            on_action: () => {
+                console.log("Quick action clicked");
+            }
+        },
+        {
+            label: "Quick Action",
+            icon: "fa-solid fa-bolt",
+            colour: "#ffcc00",
+            on_action: () => {
+                console.log("Quick action clicked");
+            }
+        }
+    ]);
+};
 
 /**
  * Global message listener for all NUI messages.

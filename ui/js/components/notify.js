@@ -1,28 +1,16 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
 
 /**
@@ -47,7 +35,7 @@ export class Notify {
         if ($(`#${this.container_id}`).length) return;
         const style = this.resolve_position_style();
         const dir = this.fill_direction === "up" ? "column-reverse" : "column";
-        $("body").append(`<div id="${this.container_id}" class="notify_container" style="position:absolute;${style.position};display:flex;flex-direction:${dir};align-items:${style.align};justify-content:${style.justify};gap:1vh;z-index:9999;pointer-events:none;"></div>`);
+        $("body").append(`<div id="${this.container_id}" class="notify_container" style="position:absolute;${style.position};display:flex;flex-direction:${dir};align-items:${style.align};justify-content:${style.justify};gap:1.5vh;z-index:9999;pointer-events:none;"></div>`);
     }
 
     /** @private Handles notification positioning */
@@ -77,23 +65,21 @@ export class Notify {
      * @param {string} opts.message - Body message text.
      * @param {number} [opts.duration=4000] - Auto-close duration in ms. Set to 0 for sticky.
      * @param {string|null} [opts.icon=null] - Optional icon class.
-     * @param {boolean} [opts.match_border=false] - Whether to color-match border to type.
-     * @param {boolean} [opts.match_shadow=false] - Whether to color-match shadow to type.
      */
-    show({ type = "info", header = null, message = "", duration = 4000, icon = null, match_border = false, match_shadow = false }) {
+    show({ type = "info", header = null, message = "", duration = 4000, icon = null }) {
         if (!message) return;
         const icon_html = icon ? `<i class="${icon} notify_icon"></i>` : "";
-        const classes = `${match_border ? ` notify_border_${type}` : ""}${match_shadow ? ` notify_shadow_${type}` : ""}`;
+        const has_duration = duration > 0;
         const notify = `
-            <div class="notify notify_${type}${classes}">
-                ${header ? `<div class="notify_header">${icon_html}${header}</div>` : `<div class="notify_body">${icon_html}${message}</div>`}
+            <div class="notify notify_${type} ${has_duration ? 'notify_has_bar' : ''}">
+                ${header ? `<div class="notify_header">${header}</div>` : `<div class="notify_body" style="padding-top: 1vh;">${message}</div>`}
                 ${header ? `<div class="notify_body">${message}</div>` : ""}
-                ${duration > 0 ? `<div class="notify_bar"><div class="notify_fill"></div></div>` : ""}
+                ${has_duration ? `<div class="notify_bar"><div class="notify_fill"></div></div>` : ""}
             </div>
         `;
         const $el = $(notify);
         $(`#${this.container_id}`).append($el);
-        if (duration > 0) {
+        if (has_duration) {
             $el.find(".notify_fill").animate({ width: "0%" }, duration, "linear");
             setTimeout(() => $el.fadeOut(300, () => $el.remove()), duration + 100);
         }
@@ -108,38 +94,32 @@ const notify = new Notify({
 
 notify.show({
     type: "success",
-    header: "colour matched",
-    message: "Notification with colour matched shadow only.",
+    header: "Success",
+    message: "Operation completed successfully.",
     icon: "fa-solid fa-check-circle",
-    duration: 300000,
-    match_border: false,
-    match_shadow: true
+    duration: 500000
 });
 
 notify.show({
-    type: "success",
-    header: "colour matched",
-    message: "Notification with colour matched border only.",
-    icon: "fa-solid fa-check-circle",
-    duration: 300000,
-    match_border: true,
-    match_shadow: false
+    type: "error",
+    header: "Error",
+    message: "Something went wrong.",
+    icon: "fa-solid fa-times-circle",
+    duration: 500000
 });
 
 notify.show({
-    type: "success",
-    header: "colour matched",
-    message: "Notification with colour matched border/shadow.",
-    icon: "fa-solid fa-check-circle",
-    duration: 300000,
-    match_border: true,
-    match_shadow: true
+    type: "warning",
+    header: "Warning",
+    message: "Some basic regular notification.",
+    icon: "fa-solid fa-exclamation-circle",
+    duration: 0
 });
 
 notify.show({
     type: "info",
-    message: "Some basic regular notification, no colour match, no header.",
+    message: "Some basic regular notification.",
     icon: "fa-solid fa-exclamation-circle",
-    duration: 500000
+    duration: 0
 });
 */

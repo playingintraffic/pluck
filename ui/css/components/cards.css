@@ -1,31 +1,18 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
 
-/* Container */
 .cards_container {
     margin-top: 1vh;
     display: grid;
@@ -38,19 +25,19 @@
     padding-right: 1.5vh;
     align-content: start;
 }
+
 .cards_container.row {
     background: transparent;
 }
+
 .cards_container.column {
     background: transparent;
 }
 
-/* Cards */
 .body_card {
     display: flex;
     background-color: var(--background_panel);
     border-radius: var(--border_radius_outer);
-    border: var(--border_dark);
     box-shadow: var(--shadow_soft);
     box-sizing: border-box;
     text-transform: uppercase;
@@ -60,22 +47,24 @@
     align-self: start;
 }
 
-/* Column Flex */
 .body_card.column {
     flex-direction: column;
     padding: 1vh;
     gap: 1vh;
 }
+
 .body_card.column .body_card_image {
     width: 100%;
     aspect-ratio: 2 / 1;
     padding: 0;
 }
+
 .body_card.column .body_card_info {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
+
 .body_card.column .body_card_actions {
     display: flex;
     flex-direction: row;
@@ -84,7 +73,6 @@
     gap: 1vh;
 }
 
-/* Row Flex */
 .body_card.row {
     flex-direction: row;
     padding: 1vh;
@@ -93,12 +81,14 @@
     min-height: 8vh;
     gap: 1vh;
 }
+
 .body_card.row .body_card_image {
     width: 64px;
     height: 64px;
     flex-shrink: 0;
     padding: 0;
 }
+
 .body_card.row .body_card_info {
     flex: 1;
     padding: 0 1vh;
@@ -109,6 +99,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .body_card.row .body_card_actions {
     display: flex;
     flex-direction: column;
@@ -117,7 +108,6 @@
     padding: 0;
 }
 
-/* Images */
 .body_card_image {
     display: flex;
     justify-content: center;
@@ -126,20 +116,22 @@
     box-sizing: border-box;
     
 }
+
 .body_card_image_wrapper {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: 0.5vh;
 }
+
 .body_card_image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    border: var(--border_dashed);
+    border-radius: var(--border_radius_inner);
 }
 
-/* Text */
 .body_card_info h4 {
     font-size: 1.2rem;
     color: var(--text_colour);
@@ -153,7 +145,6 @@
     margin: 0;
 }
 
-/* Buttons */
 .button_group.cards {
     justify-content: space-between;
     width: 100%;

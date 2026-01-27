@@ -22,6 +22,9 @@
         "/ui/css/components/action_menu.css",
         "/ui/css/components/audioplayer.css",
         "/ui/css/components/slots.css",
+        "/ui/css/components/slot_popup.css",
+        "/ui/css/components/interaction_hint.css",
+        "/ui/css/components/option_selector.css",
 
         "/ui/css/themes/default.css"
     ],
@@ -29,6 +32,7 @@
         "/ui/js/components/notify.js",
         "/ui/js/components/dui_sprite.js",
         "/ui/js/components/action_menu.js",
+        "/ui/js/components/slot_popup.js",
         "/ui/js/app.js",
         "/ui/js/test.js"
     ]

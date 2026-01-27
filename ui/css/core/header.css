@@ -1,44 +1,41 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
 
-/* Container */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     width: 100%;
     height: 8vh;
-    background: var(--background_main);
-    box-shadow: var(--inset_shadow_large);
+    background: var(--gradient_fade_center);
     z-index: 11;
     font-family: var(--header_font);
+    position: relative;
 }
 
-/* Sections */
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.7;
+}
+
 .header_section {
     display: flex;
     flex: 1;
@@ -46,7 +43,6 @@
     margin: 0 3vw;
 }
 
-/* Groups */
 .header_group {
     display: flex;
     align-items: center;
@@ -55,7 +51,6 @@
     line-height: 1;
 }
 
-/* Images */
 .header_logo {
     width: 3vw;
     height: 3vw;
@@ -63,7 +58,6 @@
     background-position: center;
 }
 
-/* Text */
 .header_text {
     display: flex;
     flex-direction: column;
@@ -72,18 +66,19 @@
     font-size: 1.75rem;
     font-weight: bold;
 }
+
 .header_text span {
     font-size: 1rem;
     font-weight: normal;
     font-family: var(--text_font);
 }
 
-/* Nav Tabs */
 .header_tabs {
     display: flex;
     gap: 1vh;
     height: 100%;
 }
+
 .header_tab {
     display: flex;
     align-items: center;
@@ -94,16 +89,13 @@
     font-family: var(--header_font);
     text-transform: uppercase;
     color: var(--text_primary);
-    opacity: 0.7;
+    opacity: 1;
     cursor: pointer;
     border-bottom: 0.2vh solid transparent;
     transition: border-color 0.2s, opacity 0.2s;
 }
-.header_tab:hover {
-    border-bottom: 0.2vh solid var(--accent);
-    opacity: 1;
-}
+
+.header_tab:hover,
 .header_tab.active {
     border-bottom: 0.2vh solid var(--accent);
-    opacity: 1;
 }

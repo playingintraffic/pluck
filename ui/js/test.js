@@ -1,29 +1,18 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
+
 
 /*
 // Slots class test
@@ -364,132 +353,6 @@ $(document).ready(() => {
                 ]
             }
         },
-
-        content: {
-            pages: {
-                slot_inventory_test: {
-                    index: 1,
-                    title: "Slot Inventory",
-                    layout: { left: 6, center: 6, right: 6 },
-                    left: {
-                        type: "slot_inventory",
-                        id: "slot_inventory_left",
-                        title: "Player Inventory",
-                        layout: {
-                            columns: 5,
-                            scroll_y: "scroll_y_auto",
-                            slot_size: 64
-                        },
-                        slots: [
-                            { id: "bread", icon: "bread.png", count: 3 },
-                            { id: "water", icon: "water.png", count: 2 },
-                            null,
-                            { id: "radio", icon: "radio.png", count: 1 },
-                            null
-                        ]
-                    },
-                    right: {
-                        type: "slot_inventory",
-                        id: "slot_inventory_right",
-                        title: "Stash",
-                        layout: {
-                            columns: 5,
-                            scroll_y: "scroll_y_auto",
-                            slot_size: 64
-                        },
-                        slots: [
-                            { id: "ammo_9mm", icon: "ammo.png", count: 30 },
-                            null,
-                            { id: "apple", icon: "apple.png", count: 5 },
-                            null,
-                            null
-                        ]
-                    }
-                }
-            }
-        }
-        
-    });
-});
-
-$(document).ready(() => {
-    new Builder({
-        header: {
-            layout: {
-                left: { justify: "flex-start" },
-                center: { justify: "center" },
-                right: { justify: "flex-end" }
-            },
-            elements: {
-                left: [
-                    {
-                        type: "group",
-                        items: [
-                            { type: "logo", image: "pit_100.png" },
-                            { type: "text", title: "PLUCK", subtitle: "Predefined Lua UI Component Kit" }
-                        ]
-                    }
-                ],
-                center: [
-                    {
-                        type: "tabs"
-                    }
-                ],
-                right: [
-                    {
-                        type: "namecard",
-                        avatar: "avatar_placeholder.jpg",
-                        background: "namecard_bg_1.jpg",
-                        name: "Player Name",
-                        title: "Some Player Title",
-                        level: 99,
-                        tier: "bronze",
-                    },
-                    {
-                        type: "buttons",
-                        buttons: [
-                            { id: "save", label: "Save", icon: "fa-solid fa-gear", action: "save_changes", class: "primary" },
-                            { id: "exit", label: "Exit", action: "exit_builder", class: "secondary" }
-                        ]
-                    }
-                ]
-            }
-        },
-
-        footer: {
-            layout: {
-                left: { justify: "flex-start", gap: "1vw" },
-                center: { justify: "center" },
-                right: { justify: "flex-end", gap: "1vw" }
-            },
-            elements: {
-                left: [
-                    {
-                        type: "buttons",
-                        buttons: [
-                            { id: "deploy", label: "Deploy", action: "deploy", class: "primary" },
-                            { id: "cancel", label: "Cancel", action: "cancel", class: "secondary" }
-                        ]
-                    }
-                ],
-                center: [
-                    {
-                        type: "text",
-                        text: "Ready to deploy."
-                    }
-                ],
-                right: [
-                    {
-                        type: "actions",
-                        actions: [
-                            { key: "ESCAPE", label: "Close" },
-                            { key: "E", label: "Confirm" }
-                        ]
-                    }
-                ]
-            }
-        },
-
         content: {
             pages: {
                input_groups_test: {
@@ -709,7 +572,6 @@ $(document).ready(() => {
                 }
             }
         },
-     
         sidebar: {
             layout: { side: "left" },
             sections: [

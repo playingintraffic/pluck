@@ -1,4 +1,18 @@
-/* Body */
+/*
+--------------------------------------------------
+
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
+
+--------------------------------------------------
+*/
+
 .audio_player {
     position: relative;
     width: 20vw;
@@ -20,7 +34,6 @@
     height: 100%;
 }
 
-/* Artwork */
 .audio_artwork {
     height: 70%;
     width: auto;
@@ -33,7 +46,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Track Info */
 .audio_info {
     display: flex;
     width: 100%;
@@ -76,7 +88,6 @@
     line-height: 1;
 }
 
-/* Controls */
 .audio_controls {
     display: flex;
     flex-direction: row;
@@ -89,8 +100,8 @@
 .audio_controls button {
     padding: 0.3vh 1vh;
     background: var(--background_overlay);
-    border: var(--border_light);
-    border-radius: 2px;
+    border: var(--border_dashed);
+    border-radius: var(--border_radius_inner);
     color: var(--text_primary);
     font-size: 0.75rem;
     cursor: pointer;
@@ -114,7 +125,6 @@
     transform: scale(0.92);
 }
 
-/* Progress Bar */
 .audio_progress {
     position: absolute;
     bottom: 0.5vh;

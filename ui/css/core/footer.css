@@ -1,38 +1,25 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
 
-/* Container */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 8vh;
-    background: var(--background_main);
+    background: var(--gradient_fade_center);
     color: var(--text_primary);
     font-family: var(--header_font);
     box-shadow: var(--inset_shadow_large);
@@ -45,24 +32,45 @@
 
     opacity: 1;
     user-select: none;
+    position: relative;
 }
 
-/* Sections */
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.7;
+}
+
 .footer_section {
-    flex: 1 1 0%;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 100%;
     min-width: 0;
-    padding: 0 2vw;
+    padding: 0 3vw;
     overflow: hidden;
 }
+
+.footer_section.left {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+}
+
 .footer_section.center {
+    flex: 0 0 auto;
     justify-content: center;
 }
 
-/* Groups */
+.footer_section.right {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+}
+
 .footer_group,
 .footer_container,
 .footer_actions_group {
@@ -71,40 +79,43 @@
     align-items: center;
 }
 
-/* Actions */
 .footer_action {
     display: flex;
     align-items: center;
-    gap: 0.5vw;
     opacity: 0.9;
     font-size: 1rem;
     transition: opacity 0.2s ease;
     cursor: pointer;
 }
+
 .footer_action.disabled {
     opacity: 0.4;
     pointer-events: none;
 }
+
 .footer_key {
-    background: var(--accent);
-    box-shadow: var(--inset_shadow_large);
+    background: var(--background_main);
+    border: var(--border_dashed);
     border-radius: var(--border_radius_outer);
-    padding: var(--button_padding);
-    font-size: 1rem;
-    color: var(--text_primary);
+    padding: 0.2vh 0.8vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 2.5rem;
-    text-align: center;
-}
-.footer_label {
+    color: var(--text_primary);
+    opacity: 0.9;
+    margin: 0.35vh 0;
+    white-space: nowrap;
     font-size: 1rem;
-    color: var(--text_secondary);
-    text-shadow: var(--text_shadow_hard);
+    text-transform: uppercase;
 }
 
-/* Text */
+.footer_label {
+    font-size: 1rem;
+    color: var(--text_primary);
+    padding: 0.1vh 0.5vh;
+    text-transform: uppercase;
+}
+
 .footer_text {
     font-size: 1rem;
     color: var(--text_secondary);
@@ -113,7 +124,6 @@
     padding: 0.25vh 1vw;
 }
 
-/* Buttons */
 .footer_button_group {
     display: flex;
     gap: 1vw;

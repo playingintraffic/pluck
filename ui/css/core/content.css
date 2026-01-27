@@ -38,7 +38,7 @@
     display: flex;
     color: var(--text_primary);
     font-family: var(--header_font);
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 1px;
     padding-bottom: 0.5vh;
     padding-right: 0.5vh;
@@ -48,7 +48,7 @@
     text-shadow: var(--text_shadow);
     justify-content: space-between;
     align-items: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 .content_title h3::after {
     position: absolute;
@@ -61,11 +61,11 @@
 }
 
 .content_title span {
-    background: var(--background_overlay);
+    background: var(--background_panel);
     padding: 0.5vh 1vh;
     font-size: 0.85rem;
     border-radius: var(--border_radius_inner);
-    border: var(--border_dark);
+    border: var(--border_dashed);
     display: flex;
     align-items: center;
 }

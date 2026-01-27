@@ -1,3 +1,18 @@
+/*
+--------------------------------------------------
+
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
+
+--------------------------------------------------
+*/
+
 .slot_hotkey {
     position: absolute;
     top: 0.5vh;
@@ -26,11 +41,37 @@
 }
 
 .slot_group_title {
-    padding: 1vh 1.5vh;
     background: var(--background_main);
-    border: var(--border_dark);
+    border: var(--border_dashed);
     border-radius: var(--border_radius_inner);
     user-select: none;
+    height: 3.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5vh 1vh;
+}
+
+.slot_group_title_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0.8vh 1.5vh;
+    text-transform: uppercase;
+}
+
+.slot_group_title_label {
+    display: flex;
+    align-items: center;
+    gap: 0.6vh;
+    line-height: 1;
+}
+
+.slot_group_title_label i {
+    font-size: 0.8rem;
+    line-height: 1;
+    
 }
 
 .slot_group_title.collapsible {
@@ -42,30 +83,14 @@
     background: var(--background_hover);
 }
 
-.slot_group_title h4 {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text_primary);
-    display: flex;
-    align-items: center;
-    gap: 1vh;
-}
-
-.slot_group_title h4 i {
-    font-size: 0.7rem;
-    color: var(--text_secondary);
-    transition: transform 0.2s ease;
-}
-
-.slot_group_title h4 span {
-    margin-left: auto;
+.slot_group_title span {
     font-size: 0.85rem;
-    font-weight: 500;
     color: var(--text_secondary);
+
     display: flex;
     align-items: center;
-    gap: 0.35vh;
+    gap: 0.5vh;
+    line-height: 1;
 }
 
 .slots_container {
@@ -217,18 +242,23 @@
 .body_slot.rarity_common .slot_progress_fill { 
     background: var(--rarity_common); 
 }
+
 .body_slot.rarity_uncommon .slot_progress_fill { 
     background: var(--rarity_uncommon); 
 }
+
 .body_slot.rarity_rare .slot_progress_fill { 
     background: var(--rarity_rare); 
 }
+
 .body_slot.rarity_epic .slot_progress_fill{ 
     background: var(--rarity_epic); 
 }
+
 .body_slot.rarity_legendary .slot_progress_fill { 
     background: var(--rarity_legendary); 
 }
+
 .body_slot:not([class*="rarity_"]) .slot_progress_fill { 
     background: var(--accent); 
 }
@@ -254,7 +284,7 @@
 
 .slot_label {
     width: 100%;
-    border: var(--border_dark);
+    border: var(--border_dashed);
     border-radius: var(--border_radius_inner);
     color: var(--text_secondary);
     text-align: center;
@@ -263,13 +293,14 @@
     white-space: nowrap;
     pointer-events: none;
     background: var(--background_main);
+    padding: 0.25vh 0.5vh;
 }
 
 .positioned_slot_wrapper,
 .positioned_slot_wrapper *:not(.body_slot) {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .positioned_slot_wrapper .body_slot {
-  pointer-events: auto;
+    pointer-events: auto;
 }

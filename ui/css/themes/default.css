@@ -1,28 +1,16 @@
 /*
-    This file is part of PLUCK (Predefined Lua UI Component Kit).
-    Support honest development retain this credit. Don't be that guy...
+--------------------------------------------------
 
-    MIT License
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
 
-    Copyright (c) 2025 Playing In Traffic
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+--------------------------------------------------
 */
 
 body.default {
@@ -70,6 +58,9 @@ body.default {
     --gradient_fade_left: linear-gradient(to right, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0.5) 15%, rgba(20, 20, 20, 0) 30%);
     --gradient_fade_right: linear-gradient(to left, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0.5) 15%, rgba(20, 20, 20, 0) 30%);
     --gradient_fade_both: linear-gradient(to right, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0.5) 15%, rgba(20, 20, 20, 0.25) 25%, rgba(20, 20, 20, 0.25) 75%, rgba(20, 20, 20, 0.5) 85%, rgba(20, 20, 20, 1) 100%);
+    --gradient_fade_center: linear-gradient(to right, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 0.5) 10%, rgba(20, 20, 20, 0.75) 50%, rgba(20, 20, 20, 0.5) 85%, rgba(20, 20, 20, 0) 100%);
+    --gradient_fade_center_darker: linear-gradient(to right, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 0.65) 10%, rgba(20, 20, 20, 0.85) 50%, rgba(20, 20, 20, 0.65) 85%, rgba(20, 20, 20, 0) 100%);
+    --gradient_focus_circle: radial-gradient(circle at center, rgba(20,20,20,0.85) 0%, rgba(20,20,20,0.6) 35%, rgba(20,20,20,0.3) 55%, rgba(20,20,20,0.1) 70%, rgba(20,20,20,0) 85%);
 
     /* Buttons */
     --button_padding: 0.2vh 1vh;
