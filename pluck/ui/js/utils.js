@@ -42,7 +42,7 @@ export async function send_nui_callback(action, dataset = {}, additional = {}) {
         should_close: additional.should_close || false
     };
 
-    const res = await fetch(`https://pluck/nui:handler`, {
+    const res = await fetch(`https://${GetParentResourceName()}/nui:handler`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -58,9 +58,20 @@ export async function send_nui_callback(action, dataset = {}, additional = {}) {
  * @param {string} base - The base directory path (e.g. "/pluck/ui/assets/logos/"). Ignored if image is a full path.
  * @returns {string} Resolved image path.
  */
-export function resolve_image_path(image, base = "/pluck/ui/assets/") {
+export function resolve_image_path(image, base = "/ui/assets/") {
     if (!image || typeof image !== "string") return "";
     if (/^(nui:\/\/|https?:\/\/)/i.test(image)) return image;
     if (/^\//.test(image)) return image;
     return base + image;
+}
+
+/**
+ * Resolves the base path of the PLUCK UI library at runtime.
+ * This allows the library to be relocated without updating imports.
+ * @returns {string} Base path before `/ui/`
+ */
+export function get_base_path() {
+    const url = new URL(import.meta.url);
+    const match = url.pathname.match(/^(.*?)(\/ui\/)/);
+    return match ? match[1] : "";
 }

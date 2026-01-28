@@ -13,9 +13,9 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Cards } from "/pluck/ui/js/components/cards.js";
-import { Slots } from "/pluck/ui/js/components/slots.js";
-import { InputGroups } from "/pluck/ui/js/components/input_groups.js";
+import { Cards } from "../components/cards.js";
+import { Slots } from "../components/slots.js";
+import { InputGroups } from "../components/input_groups.js";
 
 /**
  * @class Content

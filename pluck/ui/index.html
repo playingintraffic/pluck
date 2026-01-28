@@ -1,18 +1,3 @@
-<!--
---------------------------------------------------
-
-This file is part of PLUCK.
-You are free to use these files within your own resources.
-Please retain the original credit and attached MIT license.
-Support honest development.
-
-Author: Case @ BOII Development
-License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
-GitHub: https://github.com/playingintraffic/pluck
-
---------------------------------------------------
--->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,37 +21,45 @@ GitHub: https://github.com/playingintraffic/pluck
         </div>
 
         <script type="module">
+            function get_base_path() {
+                const url = new URL(import.meta.url);
+                // strip everything after /ui/
+                const match = url.pathname.match(/^(.*?)(\/ui\/)/);
+                return match ? match[1] : "";
+            }
+
             async function load_ui_manifest() {
                 try {
-                    const res = await fetch("manifest.json")
-                    const manifest = await res.json()
+                    const base_path = get_base_path();
+                    const res = await fetch(`manifest.json`);
+                    const manifest = await res.json();
 
                     const theme = (localStorage.getItem("theme") || manifest.default_theme || "default");
                     document.body.className = theme;
 
                     if (Array.isArray(manifest.css)) {
                         for (const href of manifest.css) {
-                            const link = document.createElement("link")
-                            link.rel = "stylesheet"
-                            link.href = href.startsWith("/") ? href : "/" + href
-                            document.head.appendChild(link)
+                            const link = document.createElement("link");
+                            link.rel = "stylesheet";
+                            link.href = `${base_path}${href}`;
+                            document.head.appendChild(link);
                         }
                     }
 
                     if (Array.isArray(manifest.js)) {
                         for (const src of manifest.js) {
-                            const script = document.createElement("script")
-                            script.type = "module"
-                            script.src = src.startsWith("/") ? src : "/" + src
-                            document.body.appendChild(script)
+                            const script = document.createElement("script");
+                            script.type = "module";
+                            script.src = `${base_path}${src}`;
+                            document.body.appendChild(script);
                         }
                     }
                 } catch (e) {
-                    console.error("ui_manifest loading failed:", e)
+                    console.error("ui_manifest loading failed:", e);
                 }
             }
 
-            load_ui_manifest()
+            load_ui_manifest();
         </script>
     </body>
 </html>

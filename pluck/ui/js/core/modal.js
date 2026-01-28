@@ -13,7 +13,7 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Buttons } from "/pluck/ui/js/components/buttons.js"
+import { Buttons } from "../components/buttons.js"
 
 /**
  * @class Modal

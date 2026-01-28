@@ -13,11 +13,11 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Content } from "/pluck/ui/js/core/content.js"
-import { Footer } from "/pluck/ui/js/core/footer.js"
-import { Header } from "/pluck/ui/js/core/header.js"
-import { Sidebar } from "/pluck/ui/js/core/sidebar.js"
-import { Tooltip } from "/pluck/ui/js/core/tooltip.js"
+import { Content } from "./core/content.js"
+import { Footer } from "./core/footer.js"
+import { Header } from "./core/header.js"
+import { Sidebar } from "./core/sidebar.js"
+import { Tooltip } from "./core/tooltip.js"
 
 /**
  * @class Builder

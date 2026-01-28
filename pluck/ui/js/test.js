@@ -16,7 +16,7 @@ GitHub: https://github.com/playingintraffic/pluck
 
 /*
 // Slots class test
-import { Builder } from "/pluck/ui/js/builder.js";
+import { Builder } from "../builder.js";
 
 $(document).ready(() => {
     const builder = new Builder({
@@ -181,7 +181,7 @@ $(document).ready(() => {
 */
 
 /*
-import { Builder } from "/pluck/ui/js/builder.js";
+import { Builder } from "../builder.js";
 
 $(document).ready(() => {
     new Builder({
@@ -274,7 +274,7 @@ $(document).ready(() => {
 */
 
 /*
-import { Builder } from "/pluck/ui/js/builder.js";
+import { Builder } from "../builder.js";
 
 $(document).ready(() => {
     new Builder({

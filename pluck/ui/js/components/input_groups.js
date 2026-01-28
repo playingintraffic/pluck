@@ -13,8 +13,8 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Buttons } from "/pluck/ui/js/components/buttons.js"
-import { send_nui_callback } from "/pluck/ui/js/utils.js";
+import { Buttons } from "../components/buttons.js"
+import { send_nui_callback } from "./../utils.js";
 
 /**
  * @class InputGroups

@@ -13,7 +13,7 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { resolve_image_path } from "/pluck/ui/js/utils.js";
+import { resolve_image_path } from "./../utils.js";
 
 export class SlotPopup {
     constructor(config = {}) {

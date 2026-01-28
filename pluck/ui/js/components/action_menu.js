@@ -13,7 +13,7 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { send_nui_callback } from "/pluck/ui/js/utils.js";
+import { send_nui_callback } from "./../utils.js";
 
 export class ActionMenu {
     constructor() {

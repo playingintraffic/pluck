@@ -13,6 +13,8 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
+import { get_base_path } from "./../utils.js";
+
 export class AudioPlayer {
     /**
      * @param {boolean} [autoplay=true]
@@ -32,7 +34,9 @@ export class AudioPlayer {
 
     /** @returns {Promise<void>} */
     async init() {
-        await this.load_json_data(["/pluck/ui/core/data/tracklist.json"]);
+        const base = get_base_path();
+        await this.load_json_data([`${base}/ui/data/tracklist.json`]);
+
         if (this.tracklist.length === 0) return;
 
         this.current_index = this.randomize
@@ -63,17 +67,21 @@ export class AudioPlayer {
      */
     play_song(index, autoplay = true) {
         const song = this.tracklist[index];
-        this.audio.src = `/pluck/ui/core/assets/audio/${song.file}`;
+        const base = get_base_path();
+
+        this.audio.pause();
+        this.audio.src = `${base}/ui/assets/audio/${song.file}`;
+        this.audio.load();
+
         this.update_ui(song);
 
         if (autoplay) {
-            this.audio.muted = true;
             this.audio.play().then(() => {
-                this.audio.muted = false;
                 this.update_play_icon();
-            }).catch(e => console.warn("Autoplay failed:", e));
+            }).catch(() => {
+                this.update_play_icon();
+            });
         } else {
-            this.audio.pause();
             this.update_play_icon();
         }
     }
@@ -83,8 +91,7 @@ export class AudioPlayer {
         const icon = $("#toggle_play_pause i");
         if (!icon.length) return;
 
-        icon.removeClass("fa-play fa-pause");
-        icon.addClass(this.audio.paused ? "fa-play" : "fa-pause");
+        icon.removeClass("fa-play fa-pause").addClass("fa-solid").addClass(this.audio.paused ? "fa-play" : "fa-pause");
     }
 
     /** @returns {string} HTML for audio player */
@@ -117,11 +124,9 @@ export class AudioPlayer {
      * @param {Object} song
      */
     update_ui(song) {
+        const base = get_base_path();
         $("#progress_bar").css("width", "0%");
-        $("#song_artwork").css(
-            "background-image",
-            song.artwork ? `url(/pluck/ui/core/assets/artwork/${song.artwork})` : ""
-        );
+        $("#song_artwork").css("background-image", song.artwork ? `url(${base}/ui/assets/artwork/${song.artwork})` : "");
         $("#current_song_title").text(song.title);
         $("#current_song_artist").text(song.artist);
     }

@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Cyberblade",
+        "artist": "Extra Terra & Max Brhon",
+        "artwork": "cyberblade.jpg",
+        "file": "cyberblade.ogg"
+    },
+    {
+        "title": "The Riot",
+        "artist": "NIVIRO",
+        "artwork": "the_riot.jpg",
+        "file": "the_riot.ogg"
+    },
+    {
+        "title": "Take It Down",
+        "artist": "Facading",
+        "artwork": "take_it_down.jpg",
+        "file": "take_it_down.ogg"
+    }
+]

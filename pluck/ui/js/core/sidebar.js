@@ -13,7 +13,7 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { send_nui_callback, extract_dataset } from "/pluck/ui/js/utils.js";
+import { send_nui_callback, extract_dataset } from "./../utils.js";
 
 /**
  * @class Sidebar

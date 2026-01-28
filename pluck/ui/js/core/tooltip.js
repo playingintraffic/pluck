@@ -13,8 +13,8 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Modal } from "/pluck/ui/js/core/modal.js";
-import { send_nui_callback } from "/pluck/ui/js/utils.js";
+import { Modal } from "./modal.js";
+import { send_nui_callback } from "./../utils.js";
 
 /**
  * @class Tooltip

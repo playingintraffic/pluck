@@ -13,9 +13,9 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Buttons } from "/pluck/ui/js/components/buttons.js"
-import { Namecard } from "/pluck/ui/js/components/namecard.js"
-import { resolve_image_path } from "/pluck/ui/js/utils.js";
+import { Buttons } from "../components/buttons.js"
+import { Namecard } from "../components/namecard.js"
+import { resolve_image_path } from "./../utils.js";
 
 /**
  * @class Header

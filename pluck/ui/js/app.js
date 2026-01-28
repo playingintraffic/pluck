@@ -13,16 +13,17 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Builder } from "/pluck/ui/js/builder.js";
-import { Notify } from "/pluck/ui/js/components/notify.js";
-import { DUISprite } from "/pluck/ui/js/components/dui_sprite.js";
-import { ProgressCircle } from "/pluck/ui/js/components/progress_circle.js";
-import { ProgressBar } from "/pluck/ui/js/components/progress_bar.js";
-import { Modal } from "/pluck/ui/js/core/modal.js";
-import { ActionMenu } from "/pluck/ui/js/components/action_menu.js";
-import { SlotPopup } from "/pluck/ui/js/components/slot_popup.js";
-import { InteractionHint } from "/pluck/ui/js/components/interaction_hint.js";
-import { OptionsSelector } from "/pluck/ui/js/components/option_selector.js";
+// ✅ correct
+import { Builder } from "./builder.js";
+import { Notify } from "./components/notify.js";
+import { DUISprite } from "./components/dui_sprite.js";
+import { ProgressCircle } from "./components/progress_circle.js";
+import { ProgressBar } from "./components/progress_bar.js";
+import { Modal } from "./core/modal.js";
+import { ActionMenu } from "./components/action_menu.js";
+import { SlotPopup } from "./components/slot_popup.js";
+import { InteractionHint } from "./components/interaction_hint.js";
+import { OptionsSelector } from "./components/option_selector.js";
 
 let interact_dui = null;
 let action_menu = null;
@@ -419,6 +420,17 @@ window.test_action_menu = () => {
     ]);
 };
 
+/**
+ * Update slots UI 
+ */
+handlers.update_slots = (data) => {
+    if (!data || !data.items) return;
+
+    const ui = window.ui_instance;
+    if (!ui || !ui.content) return;
+
+    ui.content.update_slots_from_server(data.items);
+};
 /**
  * Global message listener for all NUI messages.
  * Routes each message to its corresponding handler.

@@ -13,10 +13,10 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-import { Buttons } from "/pluck/ui/js/components/buttons.js"
-import { Namecard } from "/pluck/ui/js/components/namecard.js"
-import { AudioPlayer } from "/pluck/ui/js/components/audioplayer.js"
-import { send_nui_callback } from "/pluck/ui/js/utils.js";
+import { Buttons } from "../components/buttons.js"
+import { Namecard } from "../components/namecard.js"
+import { AudioPlayer } from "../components/audioplayer.js"
+import { send_nui_callback } from "./../utils.js";
 
 /**
  * @class Footer
@@ -60,7 +60,7 @@ export class Footer {
                             this.action_callbacks[action_key] = a.action;
                         }
                         return `
-                        <div class="footer_action ${a.class || ""}" ${a.id ? `id="${a.id}"` : ""} data-action="${action_key}" data-key="${a.key}">
+                        <div class="footer_action ${a.class || ""}" ${a.id ? `id="${a.id}"` : ""} data-action="${action_key}" data-key="${a.key}" ${a.should_close ? 'data-should_close="true"' : ""}>
                             <span class="footer_key">${a.key}</span><span class="footer_label">${a.label}</span>
                         </div>`;
                     }).join("")}
@@ -128,11 +128,34 @@ export class Footer {
                 const action = $match.data("action");
                 if (action) {
                     e.preventDefault();
+                    const should_close = $match.data("should_close") === true;
+
                     if (this.action_callbacks[action]) {
                         this.action_callbacks[action]();
+
+                        if (should_close && window.ui_instance) {
+                            if (window.audio_player) {
+                                window.audio_player.destroy();
+                                window.audio_player = null;
+                            }
+                            window.ui_instance.destroy();
+                            window.ui_instance = null;
+                        }
                     } else {
-                        if (this.on_action) this.on_action(action);
-                        else send_nui_callback(action, { keypress: true });
+                        if (this.on_action) {
+                            this.on_action(action, { should_close });
+                        } else {
+                            send_nui_callback(action, { keypress: true }, { should_close }).then(() => {
+                                if (should_close && window.ui_instance) {
+                                    if (window.audio_player) {
+                                        window.audio_player.destroy();
+                                        window.audio_player = null;
+                                    }
+                                    window.ui_instance.destroy();
+                                    window.ui_instance = null;
+                                }
+                            });
+                        }
                     }
                 }
             }
