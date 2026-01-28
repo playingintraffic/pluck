@@ -13,10 +13,9 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-
 /*
 // Slots class test
-import { Builder } from "../builder.js";
+import { Builder } from "../js/builder.js";
 
 $(document).ready(() => {
     const builder = new Builder({
@@ -27,7 +26,7 @@ $(document).ready(() => {
                     {
                         type: "group",
                         items: [
-                            { type: "logo", image: "pit_100.png" },
+                            //{ type: "logo", image: "pit_100.png" },
                             { type: "text", title: "PLUCK", subtitle: "Slots Class - Can be used for inventories :)" }
                         ]
                     }
@@ -113,8 +112,8 @@ $(document).ready(() => {
                                 collapsible: true, 
                                 collapsed: false,
                                 items: {
-                                    "1": { id: "ammo_pistol", image: "/pluck/ui/assets/items/ammo_pistol.png", quantity: 50, category: "ammunition", on_hover: { title: "9mm Ammunition", description: ["Standard 9mm rounds for pistols"], rarity: "common" } },
-                                    "2": { id: "pistol_mag_extended", image: "/pluck/ui/assets/items/pistol_mag_extended.png", quantity: 2, category: "magazine", on_hover: { title: "Extended Pistol Magazine", description: ["High-capacity magazine for pistols"], rarity: "rare" } }
+                                    "1": { id: "ammo_pistol", image: "/ui/assets/items/ammo_9mm.png", quantity: 50, category: "ammunition", on_hover: { title: "9mm Ammunition", description: ["Standard 9mm rounds for pistols"], rarity: "common" } },
+                                    "2": { id: "pistol_mag_extended", image: "/ui/assets/items/pistol_mag_extended.png", quantity: 2, category: "magazine", on_hover: { title: "Extended Pistol Magazine", description: ["High-capacity magazine for pistols"], rarity: "rare" } }
                                 }
                             },
                             { 
@@ -127,8 +126,8 @@ $(document).ready(() => {
                                 collapsible: true, 
                                 collapsed: false,
                                 items: {
-                                    "1": { id: "cabbage", image: "/pluck/ui/assets/items/cabbage.png", quantity: 5, category: "food", on_hover: { title: "Cabbage", description: ["Fresh cabbage. Restores hunger."], rarity: "common" } },
-                                    "2": { id: "corn", image: "/pluck/ui/assets/items/corn.png", quantity: 8, category: "food", on_hover: { title: "Corn", description: ["Sweet corn. Can be eaten or cooked."], rarity: "common" } }
+                                    "1": { id: "cabbage", image: "/ui/assets/items/cabbage.png", quantity: 5, category: "food", on_hover: { title: "Cabbage", description: ["Fresh cabbage. Restores hunger."], rarity: "common" } },
+                                    "2": { id: "corn", image: "/ui/assets/items/corn.png", quantity: 8, category: "food", on_hover: { title: "Corn", description: ["Sweet corn. Can be eaten or cooked."], rarity: "common" } }
                                 }
                             },
                             { 
@@ -141,7 +140,7 @@ $(document).ready(() => {
                                 collapsible: true, 
                                 collapsed: false,
                                 items: {
-                                    "1": { id: "weapon_pistol", image: "/pluck/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 72 }, on_hover: { title: "9mm Pistol", description: ["Holstered sidearm"], rarity: "uncommon" } }
+                                    "1": { id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 72 }, on_hover: { title: "9mm Pistol", description: ["Holstered sidearm"], rarity: "uncommon" } }
                                 }
                             },
                             { 
@@ -155,7 +154,7 @@ $(document).ready(() => {
                                 collapsed: false, 
                                 show_slot_numbers: true,
                                 items: {
-                                    "1": { id: "weed", image: "/pluck/ui/assets/items/weed.png", quantity: 3, category: "plant", on_hover: { title: "Cannabis", description: ["Medicinal plant material"], rarity: "uncommon" } }
+                                    "1": { id: "weed", image: "/ui/assets/items/weed.png", quantity: 3, category: "plant", on_hover: { title: "Cannabis", description: ["Medicinal plant material"], rarity: "uncommon" } }
                                 }
                             }
                         ]
@@ -168,9 +167,9 @@ $(document).ready(() => {
                         layout: { columns: 6, slot_size: "80px" },
                         slot_count: 80,
                         items: {
-                            "1": { id: "weapon_pistol", image: "/pluck/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 55 }, on_hover: { title: "9mm Pistol", description: ["Found on ground"], rarity: "uncommon" } },
-                            "2": { id: "ammo_pistol", image: "/pluck/ui/assets/items/ammo_pistol.png", quantity: 48, category: "ammunition", on_hover: { title: "9mm Ammunition", rarity: "common" } },
-                            "3": { id: "cabbage", image: "/pluck/ui/assets/items/cabbage.png", quantity: 3, category: "food", on_hover: { title: "Cabbage", rarity: "common" } }
+                            "1": { id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 55 }, on_hover: { title: "9mm Pistol", description: ["Found on ground"], rarity: "uncommon" } },
+                            "2": { id: "ammo_pistol", image: "/ui/assets/items/ammo_9mm.png", quantity: 48, category: "ammunition", on_hover: { title: "9mm Ammunition", rarity: "common" } },
+                            "3": { id: "cabbage", image: "/ui/assets/items/cabbage.png", quantity: 3, category: "food", on_hover: { title: "Cabbage", rarity: "common" } }
                         }
                     }
                 }
@@ -271,10 +270,10 @@ $(document).ready(() => {
         }
     });
 });
-*/
+
 
 /*
-import { Builder } from "../builder.js";
+import { Builder } from "../js/builder.js";
 
 $(document).ready(() => {
     new Builder({

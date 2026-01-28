@@ -13,7 +13,6 @@ GitHub: https://github.com/playingintraffic/pluck
 --------------------------------------------------
 */
 
-// ✅ correct
 import { Builder } from "./builder.js";
 import { Notify } from "./components/notify.js";
 import { DUISprite } from "./components/dui_sprite.js";
