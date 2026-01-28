@@ -26,7 +26,7 @@ Use it in headers or footers to show the active character, rank, or status.
 | Key          | Description                                                                |
 | ------------ | -------------------------------------------------------------------------- |
 | `type`       | Always `"namecard"` - required.                                            |
-| `avatar`     | Image file from `/ui/assets/namecards/avatars/` or full URL/`nui://` path. |
+| `avatar`     | Image file from `/pluck/ui/assets/namecards/avatars/` or full URL/`nui://` path. |
 | `background` | (Optional) Background image from `/namecards/backgrounds/` or full path.   |
 | `name`       | (Optional) Display name. Defaults to `"Player Name"`.                      |
 | `title`      | (Optional) Secondary role or tagline.                                      |

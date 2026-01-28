@@ -34,7 +34,7 @@ Slot Popups are triggered via a unified export on both **server** and **client**
 ```lua
 exports.pluck:slot_popup(source, {
     item_id = "water",
-    image = "/ui/assets/items/water.png",
+    image = "/pluck/ui/assets/items/water.png",
     quantity = 5,
     action = "added",
     rarity = "common"
@@ -53,7 +53,7 @@ exports.pluck:slot_popup(source, {
 ```lua
 exports.pluck:slot_popup({
     item_id = "weapon_pistol",
-    image = "/ui/assets/items/weapon_pistol.png",
+    image = "/pluck/ui/assets/items/weapon_pistol.png",
     quantity = 1,
     action = "added",
     rarity = "rare"
@@ -95,10 +95,10 @@ The popup automatically:
 
 ```lua
 local test_items = {
-    { item_id = "water", image = "/ui/assets/items/water.png", quantity = 5, action = "added", rarity = "common" },
-    { item_id = "weapon_pistol", image = "/ui/assets/items/weapon_pistol.png", quantity = 1, action = "added", rarity = "rare" },
-    { item_id = "cash", image = "/ui/assets/items/cash.png", quantity = 100, action = "removed", rarity = "uncommon" },
-    { item_id = "ammo_9mm", image = "/ui/assets/items/ammo_9mm.png", quantity = 50, action = "added", rarity = "legendary" }
+    { item_id = "water", image = "/pluck/ui/assets/items/water.png", quantity = 5, action = "added", rarity = "common" },
+    { item_id = "weapon_pistol", image = "/pluck/ui/assets/items/weapon_pistol.png", quantity = 1, action = "added", rarity = "rare" },
+    { item_id = "cash", image = "/pluck/ui/assets/items/cash.png", quantity = 100, action = "removed", rarity = "uncommon" },
+    { item_id = "ammo_9mm", image = "/pluck/ui/assets/items/ammo_9mm.png", quantity = 50, action = "added", rarity = "legendary" }
 }
 
 CreateThread(function()

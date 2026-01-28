@@ -25,11 +25,11 @@ A DUI Sprite:
 ## Structure
 
 ```lua
-core.add_dui_zone({
+pluck.add_dui_zone({
     id = "example_zone",
     coords = vec3(0.0, 0.0, 0.0),
     header = "Example DUI",
-    image = "/ui/assets/example.png",
+    image = "/pluck/ui/assets/example.png",
     icon = "fa-solid fa-hand",
     keys = {
         {
@@ -47,7 +47,7 @@ core.add_dui_zone({
     end,
     additional = {}
 })
-````
+```
 
 Each DUI zone represents a **single floating UI instance** in the world.
 
@@ -215,7 +215,7 @@ If `outline` and `model` are defined:
 ## Example
 
 ```lua
-core.add_dui_zone({
+pluck.add_dui_zone({
     id = "store_prompt",
     coords = coords,
     header = "Open Store",

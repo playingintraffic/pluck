@@ -1,5 +1,3 @@
-![PLUCKTHUMB2](https://github.com/user-attachments/assets/1b739384-457d-4dbc-bfe0-b9d650254985)
-
 # PLUCK - Predefined LUA UI Component Kit
 
 Read the docs: **[Documentation](https://boii.dev)**

@@ -1,4 +1,3 @@
-````md
 # Content
 
 The `content` section defines the **main UI area**, supporting **left**, **center**, and **right** regions.  
@@ -30,7 +29,7 @@ content = {
         }
     }
 }
-````
+```
 
 ---
 
@@ -139,7 +138,7 @@ This section is intentionally brief see the dedicated **Slots** documentation fo
     items = {
         ["1"] = {
             id = "water",
-            image = "/ui/assets/items/water.png",
+            image = "/pluck/ui/assets/items/water.png",
             quantity = 5
         }
     }

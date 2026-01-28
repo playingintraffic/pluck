@@ -33,7 +33,7 @@ It is intentionally simple and flexible.
 
 ```lua
 exports.pluck:update_interaction_hint({
-    image = "/ui/assets/items/water.png",
+    image = "/pluck/ui/assets/items/water.png",
     label = "Water Bottle",
     quantity = 5,
     status_text = "Equipped",

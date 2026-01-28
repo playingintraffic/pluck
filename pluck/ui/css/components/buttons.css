@@ -1,0 +1,65 @@
+/*
+--------------------------------------------------
+
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
+
+--------------------------------------------------
+*/
+
+/* Group */
+.button_group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+}
+
+/* Button */
+.button_group .btn {
+    padding: var(--button_padding);
+    font-size: 1rem;
+    font-family: var(--header_font);
+    background: var(--background_main);
+    color: var(--text_primary);
+    border: var(--border_dashed);
+    border-radius: var(--border_radius_outer);
+    cursor: pointer;
+    transition: background opacity 0.2s ease, transform 0.1s ease;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vh;
+    text-transform: uppercase;
+    padding: 0.25vh 1.5vh;
+}
+
+/* Hover / Active */
+.button_group .btn:hover {
+    opacity: 1.0;
+    transform: scale(1.02);
+}
+.button_group .btn:active {
+    opacity: 1.0;
+    background: var(--accent4);
+}
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Button Styles -- will add more later*/
+.btn.primary {
+    background: var(--accent2);
+    color: var(--text_primary);
+}
+.btn.secondary {
+    background: var(--accent3);
+    color: var(--text_primary);
+}

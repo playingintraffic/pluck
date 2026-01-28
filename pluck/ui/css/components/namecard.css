@@ -1,0 +1,92 @@
+/*
+--------------------------------------------------
+
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
+
+--------------------------------------------------
+*/
+
+/* Container */
+.namecard {
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--border_radius_inner);
+    height: 6vh;
+    gap: 1vh;
+    box-shadow: var(--inset_shadow_large);
+    color: var(--text_primary);
+    font-family: var(--header_font);
+    position: relative;
+    overflow: hidden;
+    min-width: 15vw;
+    border: var(--border_dark);
+    z-index: 11;
+}
+
+/* Image */
+.namecard_avatar {
+    width: 64px;
+    height: 64px;
+    background-size: cover;
+    background-position: center;
+    border-right: var(--border_dark);
+    flex-shrink: 0;
+}
+
+/* User Info */
+.namecard_info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+.namecard_name {
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: var(--text_shadow_hard);
+}
+.namecard_title {
+    font-size: 0.9rem;
+    color: var(--text_secondary);
+    text-shadow: var(--text_shadow_hard);
+}
+
+/* Level */
+.namecard_level {
+    position: absolute;
+    right: 1vh;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    padding: 0.2vh 0.8vh;
+    border-radius: var(--border_radius_inner);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: var(--inset_shadow_large);
+}
+
+/* Level Styles */
+.namecard.bronze { border: 0.2vh solid var(--rank_bronze); }
+.namecard.silver { border: 0.2vh solid var(--rank_silver); }
+.namecard.gold { border: 0.2vh solid var(--rank_gold); }
+.namecard.platinum { border: 0.2vh solid var(--rank_platinum); }
+.namecard.diamond { border: 0.2vh solid var(--rank_diamond); }
+.namecard.master { border: 0.2vh solid var(--rank_master); }
+.namecard.legend { border: 0.2vh solid var(--rank_legend); }
+
+.namecard.bronze .namecard_level { background: var(--rank_bronze); }
+.namecard.silver .namecard_level { background: var(--rank_silver); }
+.namecard.gold .namecard_level { background: var(--rank_gold); }
+.namecard.platinum .namecard_level { background: var(--rank_platinum); }
+.namecard.diamond .namecard_level { background: var(--rank_diamond); }
+.namecard.master .namecard_level { background: var(--rank_master); }
+.namecard.legend .namecard_level { background: var(--rank_legend); }

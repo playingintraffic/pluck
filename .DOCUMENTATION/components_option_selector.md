@@ -29,7 +29,7 @@ exports.pluck:set_options("SELECT ITEM", {
     {
         id = "water",
         label = "Water",
-        image = "/ui/assets/items/water.png",
+        image = "/pluck/ui/assets/items/water.png",
         quantity = 5,
         enabled = true,
         on_action = function(data)
@@ -174,7 +174,7 @@ exports.pluck:set_options("SELECT BAIT", {
     {
         id = "worm",
         label = "Worm",
-        image = "/ui/assets/items/worm.png",
+        image = "/pluck/ui/assets/items/worm.png",
         quantity = 12,
         enabled = true,
         on_action = function(data)
@@ -184,7 +184,7 @@ exports.pluck:set_options("SELECT BAIT", {
     {
         id = "lure",
         label = "Lure",
-        image = "/ui/assets/items/lure.png",
+        image = "/pluck/ui/assets/items/lure.png",
         quantity = 0,
         enabled = false
     }

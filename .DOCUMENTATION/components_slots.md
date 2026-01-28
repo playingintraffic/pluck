@@ -67,7 +67,7 @@ Items are assigned to slots using **string-based indices**:
 items = {
     ["1"] = {
         id = "water",
-        image = "/ui/assets/items/water.png",
+        image = "/pluck/ui/assets/items/water.png",
         quantity = 5
     }
 }
@@ -266,8 +266,8 @@ This keeps the system:
     slot_count = 16,
     columns = 4,
     items = {
-        ["1"] = { id = "bread", image = "/ui/assets/items/bread.png", quantity = 3 },
-        ["2"] = { id = "water", image = "/ui/assets/items/water.png", quantity = 1 }
+        ["1"] = { id = "bread", image = "/pluck/ui/assets/items/bread.png", quantity = 3 },
+        ["2"] = { id = "water", image = "/pluck/ui/assets/items/water.png", quantity = 1 }
     }
 }
 ```

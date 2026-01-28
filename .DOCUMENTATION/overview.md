@@ -1,5 +1,3 @@
-![pit_pluck_thumb](https://github.com/user-attachments/assets/6ae74c86-3294-493c-a5c0-98dd2c31df0c)
-
 # PLUCK - Predefined LUA UI Component Kit
 
 ## What is PLUCK?
@@ -26,10 +24,11 @@ Less "learning React" - more "just show the damn button."
 - **No Headaches** - Buttons, modals, inputs - they just work.
 - **No HTML** - Build everything in clean, readable Lua.
 - **Unified Look** - Consistent visuals across your entire server.
+- **Flexible Setup** - Use as standalone resource OR embed directly into your own scripts.
 
 ## What's Included?
 
-### Main UI Frame
+### Main UI Builder
 
 - **Header** - Branding + buttons + whatever chaos you want up top.
 - **Footer** - Keybinds, hints, and quick info.
@@ -42,43 +41,68 @@ Less "learning React" - more "just show the damn button."
 - **Buttons** - Smart, modal-aware buttons.
 - **Cards** - Display items, jobs, stores, whatever.
 - **Inputs** - Full group logic (tuning, clothes, etc).
-- **Modal** - With selects, colors, text, number sliders, and more.
+- **Modals** - With selects, colors, text, number sliders, and more.
 - **Namecards** - Beautiful profile-style cards.
-- **Notify** - Simple, clean in-UI notifications.
+- **Notifications** - Simple, clean in-UI notifications.
+- **Options Selector** - Item selection with images and quantities.
+- **Interaction Hints** - Context-aware action prompts.
+- **Progress Indicators** - Bars and circles for loading states.
+- **Slot Popups** - Quick notification popups.
+- **DUI Zones** - Interactive UI elements in the game world.
 
 ### Extras
 
 - **Themes** - One file controls fonts, spacing, and color.
-- **Layouts** *(coming soon)- - Premade setups for stores, panels, and more.
+- **Layouts** *(coming soon)* - Premade setups for stores, panels, and more.
 
 ## Quick Install
 
-### Download
+### Method 1: Standalone Resource
 
+**Download**
 - Grab the latest release from [Releases](https://github.com/boiidevelopment/pluck/releases/)
 
-### Add the Resource
-
+**Add the Resource**
 - Drop the `pluck` folder into your `resources` directory.
 
-### Add to `server.cfg`
-
+**Add to `server.cfg`**
 - `ensure pluck`
 
-### Start or Restart
-
+**Start or Restart**
 F8 Console:
-- refresh; ensure pluck
+- `refresh; ensure pluck`
 
-## Notes
+**Usage**
+- Call exports: `exports.pluck:notify(opts)`
 
-- This is **beta**. Stuff will move. Some things might die off.
-- A stable **1.1** is coming - PLUCK will be used in official PIT scripts going forward.
-- JavaScript isn't my strongest language. If you spot dumb code, tell me. I might even fix it.
+### Method 2: Embedded Library
+
+**Extract Core**
+- Open the `pluck` resource folder.
+- Copy the `pluck` folder into your own resource's directory (e.g., `myresource/lib/pluck/`).
+
+**Update `fxmanifest.lua`**
+```lua
+-- Add these lines to your fxmanifest
+shared_scripts {
+    'lib/pluck/main.lua',
+    'lib/pluck/components/**/*.lua'
+}
+
+ui_page 'lib/pluck/ui/index.html'
+
+files {
+    'lib/pluck/ui/**/*'
+}
+```
+
+**Usage**
+- Access directly e.g, `pluck.notify(opts)`, `pluck.show_progressbar(options)` etc.
+- No exports needed functions available natively in your resource.
 
 ## Support
 
-Need help? Hit up the Playing In Traffic [Discord](https://discord.gg/MUckUyS5Kq)
+Need help? Hit up the [Discord](https://discord.gg/MUckUyS5Kq)
 
 **Support Hours:**
 Mon-Fri, 10AM-10PM GMT

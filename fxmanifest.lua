@@ -41,26 +41,21 @@ fx_version "cerulean"
 games { "gta5", "rdr3" }
 
 name "pluck"
-version "1.3.0"
+version "1.5.0"
 description "PLUCK - Predefined Lua UI Component Kit"
-author "PlayingInTraffic"
-repository "https://github.com/playingintraffic/pluck"
+author "Case"
+repository "https://github.com/boiidevelopment/pluck"
 lua54 "yes"
 
 fx_version "cerulean"
 game "gta5"
 
-ui_page "ui/index.html"
+ui_page "pluck/ui/index.html"
 nui_callback_strict_mode "true"
 
-files {
-    "**"
-}
+files { "**" }
 
---- Init
-shared_script "init.lua"
-
---- Core
 shared_scripts {
-    "scripts/*.lua"
+    "pluck/init.lua",
+    "pluck/shared/*.lua"
 }
