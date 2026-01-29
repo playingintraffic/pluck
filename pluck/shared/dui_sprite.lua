@@ -138,7 +138,8 @@ if not pluck.is_server then
     --- @return table: A table containing the DUI object and texture data.
     local function create_dui(location_id)
         local txd_name, txt_name = location_id, location_id
-        local dui_url = "https://cfx-nui-pluck/pluck/ui/index.html"
+        local ui_path = pluck.embedded_path and (pluck.embedded_path .. "/pluck/ui/index.html") or "/pluck/ui/index.html"
+        local dui_url = ("https://cfx-nui-%s%s"):format(pluck.resource_name, ui_path)
         local screen_width, screen_height = GetActiveScreenResolution()
         local dui_object = CreateDui(dui_url, screen_width, screen_height)
         local txd = CreateRuntimeTxd(txd_name)
@@ -152,12 +153,15 @@ if not pluck.is_server then
         }
     end
 
-
     --- Adds a new zone to the DUI system.
     --- @param options table: A table containing zone options.
     local function add_dui_zone(options)
         if not options.id or not options.coords or not options.header then return end
+
         local valid_keys = {}
+        local actions = {}
+        local action_counter = 0
+
         for _, key_data in ipairs(options.keys or {}) do
             local key_control = key_list[string.lower(key_data.key)]
             if key_control then
@@ -165,12 +169,15 @@ if not pluck.is_server then
                 valid_keys[#valid_keys + 1] = key_data
             end
         end
+
         local entity = nil
         if options.entity and options.model then
             entity = GetClosestObjectOfType(options.coords.x, options.coords.y, options.coords.z, 1.0, GetHashKey(options.model), false, false, false)
         end
+
         dui_locations[options.id] = {
             _last_state = {},
+            actions = actions,
             image = options.image or nil,
             id = options.id,
             model = options.model,

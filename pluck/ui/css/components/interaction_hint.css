@@ -1,9 +1,24 @@
+/*
+--------------------------------------------------
+
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
+
+--------------------------------------------------
+*/
+
 .interaction_hint {
     position: absolute;
     bottom: 8vh;
     left: 50%;
     transform: translateX(-50%);
-    width: 20vw;
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;

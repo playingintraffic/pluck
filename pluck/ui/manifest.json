@@ -25,6 +25,7 @@
         "/ui/css/components/slot_popup.css",
         "/ui/css/components/interaction_hint.css",
         "/ui/css/components/option_selector.css",
+        "/ui/css/components/task_list.css",
 
         "/ui/css/themes/default.css"
     ],

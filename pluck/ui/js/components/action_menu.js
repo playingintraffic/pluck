@@ -170,8 +170,7 @@ export class ActionMenu {
         this.menu_container.empty();
         this.menu_stack = [];
         this.is_menu_active = false;
-        
-        // Send close callback to remove focus
+
         fetch(`https://pluck/action_menu:close`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },

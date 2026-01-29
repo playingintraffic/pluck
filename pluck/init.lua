@@ -27,6 +27,8 @@ pluck.debug_colours = {
     dev = "^9"
 }
 pluck.is_server = IsDuplicityVersion()
+pluck.resource_name = GetCurrentResourceName()
+pluck.embedded_path = nil
 pluck.registered_functions = {}
 
 --- @section Utility Functions
@@ -136,6 +138,7 @@ if pluck.is_server then
 
     pluck.build_ui = build_ui
     exports("build_ui", build_ui)
+    exports("build", build_ui) -- added back for back compat may remove in future switch to `build_ui` 
 
     --- Closes the UI on the specified client.
     --- @param source number: The player source ID to close the UI for.

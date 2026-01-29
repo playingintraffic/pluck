@@ -16,6 +16,7 @@ GitHub: https://github.com/playingintraffic/pluck
 import { Cards } from "../components/cards.js";
 import { Slots } from "../components/slots.js";
 import { InputGroups } from "../components/input_groups.js";
+import { send_nui_callback } from "./../utils.js";
 
 /**
  * @class Content
@@ -32,7 +33,6 @@ export class Content {
         this.classes = classes;
         this.layout = layout;
 
-        // Items organized: page -> section -> group -> slot_num -> item
         this.page_items = Object.create(null);
 
         this.current_slots_instances = [];
@@ -69,7 +69,6 @@ export class Content {
             return;
         }
 
-        // Initialize items structure once per page
         if (!this.page_items[id]) {
             this.page_items[id] = { left: {}, center: {}, right: {} };
 

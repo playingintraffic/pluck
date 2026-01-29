@@ -25,7 +25,7 @@ export class OptionsSelector {
         if (!$("#options_selector_section").length) {
             this.build();
         }
-        
+
         this.options = options;
         if (title) this.title = title;
         this.render_options();
@@ -68,21 +68,28 @@ export class OptionsSelector {
     }
 
     add_listeners() {
-        $(document).on("click", ".options_selector_item", (e) => {
+        $(document).off("click.options_selector");
+        $(document).off("keyup.options_selector");
+
+        $(document).on("click.options_selector", ".options_selector_item", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
             const $item = $(e.currentTarget);
+            if ($item.hasClass("disabled")) return;
+
+            if ($item.data("locked")) return;
+            $item.data("locked", true);
+
             const action = $item.data("action");
-            
-            if (!action) {
-                console.warn("[OptionsSelector] No action defined on clicked option.");
-                return;
-            }
+            if (!action) return;
 
             const dataset = extract_dataset($item);
             send_nui_callback(action, dataset);
             this.hide();
         });
 
-        $(document).keyup((e) => {
+        $(document).on("keyup.options_selector", (e) => {
             if (e.key === "Escape" && $("#options_selector_section").is(":visible")) {
                 this.hide();
             }
@@ -95,11 +102,14 @@ export class OptionsSelector {
 
     hide() {
         $.post(`https://${GetParentResourceName()}/nui:remove_focus`, JSON.stringify({}));
-        $("#options_selector_section").fadeOut(500);
-        
+        $("#options_selector_section").fadeOut(500, () => {
+            $(".options_selector_item").removeData("locked");
+        });
     }
 
     destroy() {
+        $(document).off("click.options_selector");
+        $(document).off("keyup.options_selector");
         $("#options_selector_section").remove();
     }
 }

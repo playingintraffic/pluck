@@ -23,7 +23,6 @@
         <script type="module">
             function get_base_path() {
                 const url = new URL(import.meta.url);
-                // strip everything after /ui/
                 const match = url.pathname.match(/^(.*?)(\/ui\/)/);
                 return match ? match[1] : "";
             }

@@ -29,7 +29,7 @@ export class ProgressCircle {
     constructor(options) {
         this.settings = {
             font: "Kanit",
-            segment_color: "#4dcbc2",
+            segment_color: "#e4ad29",
             background_color: "var(--background_main)",
             inactive_color: "rgba(0, 0, 0, 0.25)",
             segment_count: options.segments ?? 30,

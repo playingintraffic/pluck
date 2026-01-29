@@ -36,7 +36,7 @@ export class Footer {
         this.on_action = on_action;
         this.on_button_action = on_button_action;
         this.audio_player = null;
-        this.action_callbacks = {}; // Store function references
+        this.action_callbacks = {};
     }
 
     /** @param {string} section @returns {string} CSS style string for section */

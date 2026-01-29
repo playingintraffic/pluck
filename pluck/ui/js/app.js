@@ -23,11 +23,13 @@ import { ActionMenu } from "./components/action_menu.js";
 import { SlotPopup } from "./components/slot_popup.js";
 import { InteractionHint } from "./components/interaction_hint.js";
 import { OptionsSelector } from "./components/option_selector.js";
+import { TaskList } from "./components/task_list.js";
 
 let interact_dui = null;
 let action_menu = null;
 let interaction_hint = null;
 let options_selector = null;
+let task_list = null;
 
 /**
  * Notification instance
@@ -430,6 +432,113 @@ handlers.update_slots = (data) => {
 
     ui.content.update_slots_from_server(data.items);
 };
+
+/**
+ * Shows task list
+ */
+handlers.show_task_list = (data) => {
+    if (!task_list) {
+        task_list = new TaskList();
+    }
+    task_list.set_tasks(data.payload.title, data.payload.tasks);
+    task_list.show();
+}
+
+/**
+ * Hides task list
+ */
+handlers.hide_task_list = () => {
+    if (task_list) {
+        task_list.hide();
+    }
+}
+
+/**
+ * Destroys task list
+ */
+handlers.destroy_task_list = () => {
+    if (task_list) {
+        task_list.destroy();
+        task_list = null;
+    }
+}
+
+/**
+ * Updates specific task in task list
+ */
+handlers.update_task = (data) => {
+    if (!task_list) return;
+    
+    const { task_id, updates } = data.payload;
+    const tasks = task_list.tasks;
+    const task_index = tasks.findIndex(t => t.id === task_id);
+    
+    if (task_index !== -1) {
+        tasks[task_index] = { ...tasks[task_index], ...updates };
+        task_list.set_tasks(task_list.title, tasks);
+    }
+}
+
+window.test_task_list = () => {
+    if (!task_list) {
+        task_list = new TaskList();
+    }
+
+    task_list.set_tasks("TASKS", [
+        {
+            id: "task_1",
+            label: "Task 1",
+            description: "This is the first task description",
+            completed: true,
+            action: "test_action"
+        },
+        {
+            id: "task_2",
+            label: "Task 2",
+            description: "This is the second task description",
+            in_progress: true,
+            progress: 65,
+            action: "test_action"
+        },
+        {
+            id: "task_3",
+            label: "Task 3",
+            description: "This is the third task description",
+            progress: 0,
+            action: "test_action"
+        },
+        {
+            id: "task_4",
+            label: "Task 4",
+            description: "This is the fourth task description",
+            progress: 33,
+            action: "test_action"
+        }
+    ]);
+    
+    task_list.show();
+}
+
+window.test_task_update = () => {
+    if (!task_list) return;
+
+    const tasks = task_list.tasks;
+    const task = tasks.find(t => t.id === "task_2");
+    
+    if (task) {
+        task.progress = 100;
+        task.completed = true;
+        task.in_progress = false;
+        task_list.set_tasks(task_list.title, tasks);
+    }
+}
+
+window.test_task_list_close = () => {
+    if (task_list) {
+        task_list.hide();
+    }
+}
+
 /**
  * Global message listener for all NUI messages.
  * Routes each message to its corresponding handler.

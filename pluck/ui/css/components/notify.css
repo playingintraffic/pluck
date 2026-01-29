@@ -24,13 +24,13 @@ GitHub: https://github.com/playingintraffic/pluck
     background: var(--gradient_fade_center_darker);
     color: var(--text_primary);
     min-width: 15vw;
-    max-width: 28vw;
+    max-width: 30vw;
     pointer-events: auto;
     font-family: var(--text_font);
     display: flex;
     flex-direction: column;
     animation: slide_in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0;
+    padding: 0 2vh;
     position: relative;
     overflow: hidden;
 }
