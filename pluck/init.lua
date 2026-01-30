@@ -179,6 +179,7 @@ else
 
     pluck.build_ui = build_ui
     exports("build_ui", build_ui)
+    exports("build", build_ui) -- added back for back compat may remove in future switch to `build_ui` 
 
     --- Closes the UI and removes NUI focus.
     local function close_ui()

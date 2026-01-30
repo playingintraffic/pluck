@@ -112,8 +112,8 @@ $(document).ready(() => {
                                 collapsible: true, 
                                 collapsed: false,
                                 items: {
-                                    "1": { id: "ammo_pistol", image: "/ui/assets/items/ammo_9mm.png", quantity: 50, category: "ammunition", on_hover: { title: "9mm Ammunition", description: ["Standard 9mm rounds for pistols"], rarity: "common" } },
-                                    "2": { id: "pistol_mag_extended", image: "/ui/assets/items/pistol_mag_extended.png", quantity: 2, category: "magazine", on_hover: { title: "Extended Pistol Magazine", description: ["High-capacity magazine for pistols"], rarity: "rare" } }
+                                    "1": { id: "ammo_pistol", image: "/pluck/ui/assets/items/ammo_pistol.png", quantity: 50, category: "ammunition", on_hover: { title: "9mm Ammunition", description: ["Standard 9mm rounds for pistols"], rarity: "common" } },
+                                    "2": { id: "pistol_mag_extended", image: "/pluck/ui/assets/items/pistol_mag_extended.png", quantity: 2, category: "magazine", on_hover: { title: "Extended Pistol Magazine", description: ["High-capacity magazine for pistols"], rarity: "rare" } }
                                 }
                             },
                             { 
@@ -126,8 +126,8 @@ $(document).ready(() => {
                                 collapsible: true, 
                                 collapsed: false,
                                 items: {
-                                    "1": { id: "cabbage", image: "/ui/assets/items/cabbage.png", quantity: 5, category: "food", on_hover: { title: "Cabbage", description: ["Fresh cabbage. Restores hunger."], rarity: "common" } },
-                                    "2": { id: "corn", image: "/ui/assets/items/corn.png", quantity: 8, category: "food", on_hover: { title: "Corn", description: ["Sweet corn. Can be eaten or cooked."], rarity: "common" } }
+                                    "1": { id: "cabbage", image: "/pluck/ui/assets/items/cabbage.png", quantity: 5, category: "food", on_hover: { title: "Cabbage", description: ["Fresh cabbage. Restores hunger."], rarity: "common" } },
+                                    "2": { id: "corn", image: "/pluck/ui/assets/items/corn.png", quantity: 8, category: "food", on_hover: { title: "Corn", description: ["Sweet corn. Can be eaten or cooked."], rarity: "common" } }
                                 }
                             },
                             { 
@@ -140,7 +140,7 @@ $(document).ready(() => {
                                 collapsible: true, 
                                 collapsed: false,
                                 items: {
-                                    "1": { id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 72 }, on_hover: { title: "9mm Pistol", description: ["Holstered sidearm"], rarity: "uncommon" } }
+                                    "1": { id: "weapon_pistol", image: "/pluck/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 72 }, on_hover: { title: "9mm Pistol", description: ["Holstered sidearm"], rarity: "uncommon" } }
                                 }
                             },
                             { 
@@ -154,7 +154,7 @@ $(document).ready(() => {
                                 collapsed: false, 
                                 show_slot_numbers: true,
                                 items: {
-                                    "1": { id: "weed", image: "/ui/assets/items/weed.png", quantity: 3, category: "plant", on_hover: { title: "Cannabis", description: ["Medicinal plant material"], rarity: "uncommon" } }
+                                    "1": { id: "weed", image: "/pluck/ui/assets/items/weed.png", quantity: 3, category: "plant", on_hover: { title: "Cannabis", description: ["Medicinal plant material"], rarity: "uncommon" } }
                                 }
                             }
                         ]
@@ -167,9 +167,9 @@ $(document).ready(() => {
                         layout: { columns: 6, slot_size: "80px" },
                         slot_count: 80,
                         items: {
-                            "1": { id: "weapon_pistol", image: "/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 55 }, on_hover: { title: "9mm Pistol", description: ["Found on ground"], rarity: "uncommon" } },
-                            "2": { id: "ammo_pistol", image: "/ui/assets/items/ammo_9mm.png", quantity: 48, category: "ammunition", on_hover: { title: "9mm Ammunition", rarity: "common" } },
-                            "3": { id: "cabbage", image: "/ui/assets/items/cabbage.png", quantity: 3, category: "food", on_hover: { title: "Cabbage", rarity: "common" } }
+                            "1": { id: "weapon_pistol", image: "/pluck/ui/assets/items/weapon_pistol.png", quantity: 1, category: "weapon", progress: { value: 55 }, on_hover: { title: "9mm Pistol", description: ["Found on ground"], rarity: "uncommon" } },
+                            "2": { id: "ammo_pistol", image: "/pluck/ui/assets/items/ammo_9mm.png", quantity: 48, category: "ammunition", on_hover: { title: "9mm Ammunition", rarity: "common" } },
+                            "3": { id: "cabbage", image: "/pluck/ui/assets/items/cabbage.png", quantity: 3, category: "food", on_hover: { title: "Cabbage", rarity: "common" } }
                         }
                     }
                 }
@@ -178,99 +178,6 @@ $(document).ready(() => {
     });
 });
 */
-
-/*
-import { Builder } from "../builder.js";
-
-$(document).ready(() => {
-    new Builder({
-        header: {
-            layout: { left: { justify: "flex-start" }, center: { justify: "center" }, right: { justify: "flex-end" } },
-            elements: {
-                left: [
-                    {
-                        type: "group",
-                        items: [
-                            { type: "logo", image: "pit_100.png" },
-                            { type: "text", title: "PLUCK", subtitle: "Select Input Test" }
-                        ]
-                    }
-                ],
-                center: [{ type: "tabs" }],
-                right: [
-                    {
-                        type: "buttons",
-                        buttons: [
-                            { id: "save", label: "Save", icon: "fa-solid fa-gear", action: "save_changes", class: "primary" },
-                            { id: "exit", label: "Exit", action: "exit_builder", class: "secondary" }
-                        ]
-                    }
-                ]
-            }
-        },
-
-        footer: {
-            layout: { left: { justify: "flex-start" }, center: { justify: "center" }, right: { justify: "flex-end" } },
-            elements: {
-                center: [{ type: "text", text: "Ready to test selects." }]
-            }
-        },
-
-        content: {
-            pages: {
-                select_test_page: {
-                    index: 1,
-                    title: "Select Inputs Test",
-                    layout: { left: 3 },
-                    left: {
-                        type: "input_groups",
-                        title: "Select Inputs",
-                        id: "select_test_inputs",
-                        layout: { columns: 1, scroll_x: "none" },
-                        groups: [
-                            {
-                                header: "Select Group 1",
-                                expandable: false,
-                                inputs: [
-                                    {
-                                        id: "select_1",
-                                        type: "select",
-                                        label: "Choose Option 1",
-                                        value: "b",
-                                        copyable: true,
-                                        options: [
-                                            { value: "a", label: "Option A" },
-                                            { value: "b", label: "Option B" },
-                                            { value: "c", label: "Option C" }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                header: "Select Group 2",
-                                expandable: true,
-                                inputs: [
-                                    {
-                                        id: "select_3",
-                                        type: "select",
-                                        label: "Another Select",
-                                        value: "x",
-                                        options: [
-                                            { value: "x", label: "X" },
-                                            { value: "y", label: "Y" },
-                                            { value: "z", label: "Z" }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                }
-            }
-        }
-    });
-});
-
 
 /*
 import { Builder } from "../js/builder.js";
@@ -518,30 +425,45 @@ $(document).ready(() => {
                     },
                     center: {
                         type: "input_groups",
-                        title: "Center Section",
-                        id: "test_inputs",
+                        title: "Select Inputs",
+                        id: "select_test_inputs",
                         layout: { columns: 2, scroll_x: "none" },
                         groups: [
                             {
-                                header: "A Expandable Group",
-                                expandable: true,
+                                header: "Select Group 1",
+                                expandable: false,
                                 inputs: [
-                                    { id: "option_3", type: "number", label: "Yet Another Option", category: "group_2" },
-                                    { id: "option_4", type: "text", label: "And Another One", default: "Default Value" }
+                                    {
+                                        id: "select_1",
+                                        type: "select",
+                                        label: "Choose Option 1",
+                                        value: "b",
+                                        copyable: true,
+                                        options: [
+                                            { value: "a", label: "Option A" },
+                                            { value: "b", label: "Option B" },
+                                            { value: "c", label: "Option C" }
+                                        ]
+                                    }
                                 ]
                             },
                             {
-                                header: "Some Group",
-                                expandable: false,
+                                header: "Select Group 2",
+                                expandable: true,
                                 inputs: [
-                                    { id: "option_1", type: "number", label: "Some Option", category: "group_1" },
-                                    { id: "option_2", type: "text", label: "Some Other Option", placeholder: "Enter value..." }
+                                    {
+                                        id: "select_3",
+                                        type: "select",
+                                        label: "Another Select",
+                                        value: "x",
+                                        options: [
+                                            { value: "x", label: "X" },
+                                            { value: "y", label: "Y" },
+                                            { value: "z", label: "Z" }
+                                        ]
+                                    }
                                 ]
                             }
-                        ],
-                        buttons: [
-                            { id: "group_btn", label: "Button 1", action: "btn_action_1", class: "primary" },
-                            { id: "group_btn2", label: "Button 2", action: "btn_action_2", class: "secondary" }
                         ]
                     },
                     right: {

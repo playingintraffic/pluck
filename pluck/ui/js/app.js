@@ -318,7 +318,7 @@ window.test_fishing_ui = () => {
     const interaction_hint = new InteractionHint('activities_container');
     const options_selector = new OptionsSelector('options_container');
 
-    options_selector.set_options(test_baits, 'SELECT ITEM');
+    options_selector.set_options('SELECT ITEM', test_baits);
     options_selector.show();
 
     setTimeout(() => {
