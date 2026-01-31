@@ -191,6 +191,31 @@ export class Content {
     }
 
     /**
+     * @param {Object} server_items
+     */
+    update_slots_from_server(server_items) {
+        if (!this.current_page_id) return;
+
+        const page = this.page_items[this.current_page_id];
+        if (!page) return;
+
+        for (const section of ["left", "center", "right"]) {
+            const sec = page[section];
+            if (!sec) continue;
+
+            for (const [group_id, slots] of Object.entries(server_items)) {
+                if (sec[group_id]) {
+                    sec[group_id] = JSON.parse(JSON.stringify(slots));
+                }
+            }
+        }
+
+        for (const inst of this.current_slots_instances) {
+            inst.update_items(page[inst.section_key]);
+        }
+    }
+
+    /**
      * @param {string} html
      * @param {string} [section="center"]
      */
