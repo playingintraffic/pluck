@@ -187,12 +187,6 @@ export class Content {
      * @param {Object} move_data
      */
     on_item_moved(move_data) {
-        console.group('Item Movement');
-        console.log('From:', `${move_data.from_section}.${move_data.from_group}[${move_data.from_slot}]`);
-        console.log('To:', `${move_data.to_section}.${move_data.to_group}[${move_data.to_slot}]`);
-        console.log('Type:', move_data.swap ? 'SWAP' : 'MOVE');
-        console.groupEnd();
-
         send_nui_callback("slots_moved_item", move_data);
     }
 

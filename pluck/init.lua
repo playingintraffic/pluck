@@ -190,12 +190,44 @@ else
     pluck.close_ui = close_ui
     exports("close_ui", close_ui)
 
+    --- Updates inventory slots UI from raw item data.
+    --- Handles sanitizing and sending to NUI.
+    --- @param items table: Raw UI item table (not sanitized).
+    local function update_slots(items)
+        if type(items) ~= "table" then
+            pluck.log("warn", "update_slots: invalid items table")
+            return
+        end
+
+        local safe_items = pluck.sanitize_ui(items, "inventory_update")
+
+        SendNUIMessage({ func = "update_slots", items = safe_items })
+    end
+
+    pluck.update_slots = update_slots
+    exports("update_slots", update_slots)
+
+    pluck.slot_move_handler = nil
+
+    --- Allows setting a custom hook to handle slot movement logic.
+    --- This runs on the client and is NOT a security boundary.
+    --- A malicious client could override this and fire any server event they want. 
+    --- But before screaming at me... they could already do that without this hook existing.
+    --- If this lets someone exploit your server, your server event was already broken.
+    --- Always validate and enforce slot states server-side.
+    --- @param func function: Function handler
+    local function set_slot_move_handler(func)
+        pluck.slot_move_handler = func
+    end
+
+    pluck.set_slot_move_handler = set_slot_move_handler
+    exports("set_slot_move_handler", set_slot_move_handler)
+
     --- @section Events
 
     --- Receives and builds a UI triggered by the server.
     --- @param ui table: UI configuration.
     RegisterNetEvent("pluck:build_ui", function(ui)
-        pluck.log("dev", "Event triggered: build_ui")
         build_ui(ui)
     end)
 
@@ -221,6 +253,17 @@ else
         if not data or not data.action then
             pluck.log("error", "NUI handler: Missing action field.")
             if cb then cb(false) end
+            return
+        end
+
+        if data.action == "slots_moved_item" then
+            if pluck.slot_move_handler then
+                pluck.slot_move_handler(data.dataset)
+            else
+                pluck.log("warn", "No slot move handler registered.")
+            end
+
+            if cb then cb({ success = true }) end
             return
         end
         

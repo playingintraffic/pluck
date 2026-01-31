@@ -35,3 +35,5 @@ shared_scripts {
     "pluck/init.lua",
     "pluck/shared/*.lua"
 }
+
+provide "pluck"

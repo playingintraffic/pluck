@@ -178,7 +178,6 @@ handlers.show_progressbar = (data) => {
  * @param {Array<Object>} [data.payload.buttons=[]] - Array of button definitions.
  */
 handlers.show_modal = (data) => {
-    console.log("showing modal or trying to")
     if (!data || !data.payload) {
         console.warn("[Modal] Missing payload.");
         return;
