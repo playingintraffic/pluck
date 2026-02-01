@@ -43,10 +43,21 @@ if not pluck.is_server then
     --- Shows a modal without accessing builder
     --- @param opts table: Modal options
     local function build_modal(opts)
+        if not opts then 
+            pluck.log("error", "build_modal: Modal config missing.") 
+            return 
+        end
+
+        local safe_opts = pluck.sanitize_ui(opts, "modal")
+        if not safe_opts then 
+            pluck.log("error", "build_modal: Modal config wasn't returned after sanitize.") 
+            return 
+        end
+
         SetNuiFocus(true, true)
         SendNUIMessage({
             func = "show_modal",
-            payload = opts
+            payload = safe_opts
         })
     end
 

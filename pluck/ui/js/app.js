@@ -190,6 +190,44 @@ handlers.show_modal = (data) => {
     });
 };
 
+window.test_modal = () => {
+    Modal.show({
+        title: "Test Modal",
+        options: [
+            {
+                id: "slider_1",
+                label: "Slider 1",
+                type: "range",
+                min: 0,
+                max: 100,
+                value: 50
+            },
+            {
+                id: "slider_2",
+                label: "Slider 2",
+                type: "range",
+                min: 0,
+                max: 100,
+                value: 50
+            }
+        ],
+        buttons: [
+            {
+                id: "confirm",
+                label: "Confirm",
+                on_action: function(ui_data) {
+                    console.log(ui_data.dataset);
+                }
+            },
+            {
+                id: "cancel",
+                label: "Cancel",
+                action: "close_modal"
+            }
+        ]
+    });
+};
+
 /**
  * Creates action menu
  * 

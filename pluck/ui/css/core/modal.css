@@ -114,24 +114,6 @@ GitHub: https://github.com/playingintraffic/pluck
 .modal_field input:focus {
     border: var(--border_dark);
 }
-.modal_field input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 1.5vh;
-    background: var(--background_panel);
-    border-radius: var(--border_radius_outer);
-    cursor: pointer;
-}
-.modal_field input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 100%;
-    width: 0.5vh;
-    background: var(--accent);
-    transition: background 0.2s;
-}
-.modal_field input[type="range"]:hover::-webkit-slider-thumb {
-    background: var(--accent_hover, #00c3ff);
-}
 
 /* Text Areas */
 .modal_field textarea {
@@ -220,4 +202,57 @@ GitHub: https://github.com/playingintraffic/pluck
 /* Buttons */
 .modal_button_group {
     width: 100%;
+}
+
+/* Sliders */
+.modal_field input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 1.2vh;
+    background: var(--background_panel);
+    border-radius: var(--border_radius_outer);
+    cursor: pointer;
+    outline: none;
+    accent-color: var(--accent);
+}
+
+.modal_field input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 2.2vh;
+    width: 0.6vh;
+    background: var(--accent);
+    border-radius: 0.2vh;
+    cursor: pointer;
+}
+
+.modal_field input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--accent2);
+}
+.modal_field input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    appearance: none;
+    height: 2.2vh;
+    width: 0.6vh;
+    background: var(--accent);
+    border: none;
+    border-radius: 0.2vh;
+    cursor: pointer;
+}
+
+.modal_field input[type="range"]::-moz-range-thumb:hover {
+    background: var(--accent2);
+}
+
+.modal_field input[type="range"]::-moz-range-track {
+    background: transparent;
+    border: none;
+}
+
+.slider_value {
+    margin-left: auto;
+    font-size: 1.2vh;
+    color: var(--accent);
+    font-weight: bold;
 }

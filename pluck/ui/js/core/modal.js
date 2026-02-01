@@ -34,9 +34,9 @@ export class Modal {
         this.classes = classes;
     }
 
-    /** @private @returns HTML for modal inputs  */
+    /** @private @returns HTML for modal inputs */
     get_input_html(opt) {
-        const common = `id="${opt.id}" class="modal_input" placeholder="${opt.placeholder || ''}"`;
+        const common = `id="${opt.id}" class="modal_input"`;
         let dataset_attrs = "";
 
         if (opt.dataset && typeof opt.dataset === "object") {
@@ -60,18 +60,49 @@ export class Modal {
         }
 
         if (opt.type === "textarea") {
-            return `<div class="modal_field"><label for="${opt.id}">${opt.label || opt.id}</label><textarea ${common}${dataset_attrs}></textarea></div>`;
+            return `<div class="modal_field">
+                <label for="${opt.id}">${opt.label || opt.id}</label>
+                <textarea ${common}${dataset_attrs} placeholder="${opt.placeholder || ""}"></textarea>
+            </div>`;
         }
 
-        const attrs = [`type="${opt.type || 'text'}"`, common, dataset_attrs, opt.min !== undefined ? `min="${opt.min}"` : "", opt.max !== undefined ? `max="${opt.max}"` : ""].join(" ");
-        return `<div class="modal_field"><label for="${opt.id}">${opt.label || opt.id}</label><input ${attrs.trim()} /></div>`;
+        /**
+         * Range slider input
+         * @param {number} opt.min
+         * @param {number} opt.max
+         * @param {number} opt.step
+         * @param {number} opt.value
+         */
+        if (opt.type === "range") {
+            const start = opt.value ?? opt.min ?? 0;
+            return `<div class="modal_field">
+                <label for="${opt.id}">
+                    ${opt.label || opt.id}
+                    <span class="slider_value" data-for="${opt.id}">${start}</span>
+                </label>
+                <input type="range" ${common} ${dataset_attrs} min="${opt.min ?? 0}" max="${opt.max ?? 100}" step="${opt.step ?? 1}"  value="${start}"/>
+            </div>`;
+        }
+
+        const attrs = [`type="${opt.type || "text"}"`, common, dataset_attrs, opt.placeholder ? `placeholder="${opt.placeholder}"` : "", opt.min !== undefined ? `min="${opt.min}"` : "", opt.max !== undefined ? `max="${opt.max}"` : ""].join(" ");
+
+        return `<div class="modal_field">
+            <label for="${opt.id}">${opt.label || opt.id}</label>
+            <input ${attrs.trim()} />
+        </div>`;
     }
 
     /** @returns {string} Full HTML for the modal */
     get_html() {
         const inputs = this.options.map(opt => this.get_input_html(opt)).join("\n");
         const buttons = new Buttons({ buttons: this.buttons, classes: "modal_button_group" }).get_html();
-        return `<div id="modal_container"><div class="modal ${this.classes}"><h2 class="modal_title">${this.title}</h2><div class="modal_inputs">${inputs}</div><div class="modal_actions">${buttons}</div></div></div>`.trim();
+        return `<div id="modal_container">
+            <div class="modal ${this.classes}">
+                <h2 class="modal_title">${this.title}</h2>
+                <div class="modal_inputs">${inputs}</div>
+                <div class="modal_actions">${buttons}</div>
+            </div>
+        </div>`.trim();
     }
 
     /**
@@ -93,12 +124,20 @@ export class Modal {
             const label = $(this).text();
             const $w = $(this).closest(".modal_select_wrapper");
             const $sel = $w.find(".modal_select");
-            $sel.text(label).data("value", val).attr("data-value", val).data("source", source).attr("data-source", source);
+            $sel.text(label).attr("data-value", val).attr("data-source", source);
             $w.find(".modal_select_options").hide();
         });
 
+        /** Update slider value display */
+        $(".modal_field input[type='range']").off("input").on("input", function () {
+            const id = $(this).attr("id");
+            $(`.slider_value[data-for="${id}"]`).text($(this).val());
+        });
+
         $(document).on("click", e => {
-            if (!$(e.target).closest(".modal_select_wrapper").length) $(".modal_select_options").hide();
+            if (!$(e.target).closest(".modal_select_wrapper").length) {
+                $(".modal_select_options").hide();
+            }
         });
     }
 
@@ -109,7 +148,7 @@ export class Modal {
      * @param {Array<Object>} config.options
      * @param {Array<Object>} config.buttons
      */
-    static show({ title = "Input Required", options = [], buttons = []}) {
+    static show({ title = "Input Required", options = [], buttons = [] }) {
         new Modal({ title, options, buttons }).append_to("#ui_focus");
     }
 }
