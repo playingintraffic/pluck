@@ -1,0 +1,113 @@
+/*
+--------------------------------------------------
+
+This file is part of PLUCK.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: https://github.com/boiidevelopment/pluck/blob/main/LICENSE
+GitHub: https://github.com/playingintraffic/pluck
+
+--------------------------------------------------
+*/
+
+#control_display_section {
+    position: fixed;
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+    display: none;
+    padding: 2vh 4vh;
+    background: var(--gradient_fade_center);
+    color: var(--text_primary);
+    width: fit-content;
+    border-radius: var(--border_radius_outer);
+}
+
+#control_display_section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.7;
+    border-radius: var(--border_radius_outer) var(--border_radius_outer) 0 0;
+}
+
+#control_display_section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.7;
+    border-radius: 0 0 var(--border_radius_outer) var(--border_radius_outer);
+}
+
+#control_display_section h3 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: var(--text_primary);
+    font-family: var(--header_font);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.control_display_header {
+    border-bottom: var(--border_light);
+    opacity: 0.6;
+}
+
+.control_display_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1vh;
+    padding-top: 1.2vh;
+}
+
+.control_display_item {
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+    justify-content: space-between;
+    cursor: default;
+    padding: 0.5vh;
+    border-radius: var(--border_radius_inner);
+    background: var(--background_panel);
+}
+
+.control_key {
+    background: var(--background_main);
+    border: var(--border_dashed);
+    border-radius: var(--border_radius_outer);
+    padding: 0.2vh 0.8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text_primary);
+    opacity: 0.9;
+    margin: 0.35vh 0;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-family: var(--header_font);
+}
+
+.control_action {
+    font-family: var(--text_font);
+    font-size: 0.8rem;
+    color: var(--text_secondary);
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s ease;
+    padding-right: 1vh;
+}

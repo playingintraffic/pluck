@@ -17,7 +17,7 @@ fx_version "cerulean"
 games { "gta5", "rdr3" }
 
 name "pluck"
-version "1.6.1"
+version "1.7.0"
 description "PLUCK - Predefined Lua UI Component Kit"
 author "Case"
 repository "https://github.com/boiidevelopment/pluck"

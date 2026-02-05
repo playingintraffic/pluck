@@ -24,12 +24,14 @@ import { SlotPopup } from "./components/slot_popup.js";
 import { InteractionHint } from "./components/interaction_hint.js";
 import { OptionsSelector } from "./components/option_selector.js";
 import { TaskList } from "./components/task_list.js";
+import { ControlDisplay } from "./components/control_display.js";
 
 let interact_dui = null;
 let action_menu = null;
 let interaction_hint = null;
 let options_selector = null;
 let task_list = null;
+let control_display = null;
 
 /**
  * Notification instance
@@ -320,6 +322,52 @@ handlers.destroy_options_selector = () => {
     }
 }
 
+/**
+ * Sets controls in control display
+ * @function handlers.set_controls
+ * @param {Object} data - Message data object.
+ * @param {Object} data.payload - Control display config.
+ * @param {string} data.payload.title - Title for the control display.
+ * @param {Array<Object>} data.payload.controls - Array of control objects.
+ */
+handlers.set_controls = (data) => {
+    if (!control_display) {
+        control_display = new ControlDisplay();
+    }
+    control_display.set_controls(data.payload.title, data.payload.controls);
+}
+
+/**
+ * Shows control display
+ * @function handlers.show_controls
+ */
+handlers.show_controls = () => {
+    if (control_display) {
+        control_display.show();
+    }
+}
+
+/**
+ * Hides control display
+ * @function handlers.hide_controls
+ */
+handlers.hide_controls = () => {
+    if (control_display) {
+        control_display.hide();
+    }
+}
+
+/**
+ * Destroys control display
+ * @function handlers.destroy_controls
+ */
+handlers.destroy_controls = () => {
+    if (control_display) {
+        control_display.destroy();
+        control_display = null;
+    }
+}
+
 window.test_fishing_ui = () => {
     const test_baits = [
         {
@@ -574,6 +622,23 @@ window.test_task_list_close = () => {
     if (task_list) {
         task_list.hide();
     }
+}
+
+window.test_controls = () => {
+    if (!control_display) {
+        control_display = new ControlDisplay();
+    }
+    control_display.set_controls("PLACEMENT MODE", [
+        { key: 'W', action: 'Move Forward' },
+        { key: 'A', action: 'Move Left' },
+        { key: 'S', action: 'Move Backward' },
+        { key: 'D', action: 'Move Right' },
+        { key: 'G', action: 'Rotate Left' },
+        { key: 'H', action: 'Rotate Right' },
+        { key: 'Enter', action: 'Confirm' },
+        { key: 'Backspace', action: 'Cancel' },
+    ]);
+    control_display.show();
 }
 
 /**

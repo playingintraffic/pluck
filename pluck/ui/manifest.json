@@ -26,6 +26,7 @@
         "/ui/css/components/interaction_hint.css",
         "/ui/css/components/option_selector.css",
         "/ui/css/components/task_list.css",
+        "/ui/css/components/control_display.css",
 
         "/ui/css/themes/default.css"
     ],
@@ -34,6 +35,7 @@
         "/ui/js/components/dui_sprite.js",
         "/ui/js/components/action_menu.js",
         "/ui/js/components/slot_popup.js",
+        "/ui/js/components/control_display.js",
         "/ui/js/app.js",
         "/ui/js/test.js"
     ]
