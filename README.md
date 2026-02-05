@@ -117,6 +117,14 @@ Less "learning React" - more "just show the damn button."
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/37890250-7c6e-41e4-a08a-b7685d926a08" />
 </details>
 
+<details>
+<summary>Controls Display</summary>
+
+- Straight forward, for showing key control displays.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/01486667-9d48-4a5a-bad4-6b73ba61ae45" />
+
+</details>
 
 ## Quick Install
 
